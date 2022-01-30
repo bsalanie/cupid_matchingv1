@@ -4,4 +4,9 @@ wheel
 watchdog
 flake8
 twine
+mkdocs
+mkdocs-material
+mkdocstrings
+mkdocs-git-revision-date-plugin
+
 
