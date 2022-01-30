@@ -5,7 +5,7 @@ from dataclasses import dataclass
 from typing import Tuple, Optional
 import numpy as np
 
-from .utils import print_stars
+from .utils import print_stars, npmaxabs
 from .matching_utils import Matching
 
 
@@ -82,57 +82,61 @@ class PoissonGLMResults:
         lambda_true: Optional[np.ndarray] = None,
         u_true: Optional[np.ndarray] = None,
         v_true: Optional[np.ndarray] = None,
-    ) -> None:
-        estimates = self.estimated_beta
-        stderrs = self.stderrs_beta
+    ) -> float:
+        estimates_beta = self.estimated_beta
+        stderrs_beta = self.stderrs_beta
 
         if lambda_true is None:
             repr_str = "The  estimated coefficients "
             repr_str += "(and their standard errors) are\n\n"
-            for i, coeff in enumerate(estimates):
-                repr_str += f" {coeff: > 10.3f}  ({stderrs[i]: > 10.3f})\n"
+            for i, coeff in enumerate(estimates_beta):
+                repr_str += f" {coeff: > 10.3f}  ({stderrs_beta[i]: > 10.3f})\n"
             print_stars(repr_str)
         else:
             repr_str = "The  true and estimated coefficients "
             repr_str += "(and their standard errors) are\n\n"
-            for i, coeff in enumerate(estimates):
+            for i, coeff in enumerate(estimates_beta):
                 repr_str += f"   base {i + 1}: {lambda_true[i]: > 10.3f} "
-                repr_str += f" {coeff: > 10.3f}  ({stderrs[i]: > 10.3f})\n"
+                repr_str += f" {coeff: > 10.3f}  ({stderrs_beta[i]: > 10.3f})\n"
             print_stars(repr_str)
 
-        estimates = self.estimated_u
-        stderrs = self.stderrs_u
+        estimates_u = self.estimated_u
+        stderrs_u = self.stderrs_u
 
         if u_true is None:
             repr_str = "The estimated utilities for men  "
             repr_str += "(and their standard errors) are:\n\n"
-            for i, coeff in enumerate(estimates):
-                repr_str += f" {coeff: > 10.3f}  ({stderrs[i]: > 10.3f})\n"
+            for i, coeff in enumerate(estimates_u):
+                repr_str += f" {coeff: > 10.3f}  ({stderrs_u[i]: > 10.3f})\n"
             print_stars(repr_str)
         else:
             repr_str = "The true and estimated utilities for men"
             repr_str += "(and their standard errors) are:\n\n"
-            for i, coeff in enumerate(estimates):
+            for i, coeff in enumerate(estimates_u):
                 repr_str += f"   u_{i + 1}: {u_true[i]: > 10.3f} "
-                repr_str += f" {coeff: > 10.3f}  ({stderrs[i]: > 10.3f})\n"
+                repr_str += f" {coeff: > 10.3f}  ({stderrs_u[i]: > 10.3f})\n"
             print_stars(repr_str)
 
-        estimates = self.estimated_v
-        stderrs = self.stderrs_v
+        estimates_v = self.estimated_v
+        stderrs_v = self.stderrs_v
         if v_true is None:
             repr_str = "The estimated utilities for women  "
             repr_str += "(and their standard errors) are:\n\n"
-            for i, coeff in enumerate(estimates):
-                repr_str += f" {coeff: > 10.3f}  ({stderrs[i]: > 10.3f})\n"
+            for i, coeff in enumerate(estimates_v):
+                repr_str += f" {coeff: > 10.3f}  ({stderrs_v[i]: > 10.3f})\n"
             print_stars(repr_str)
         else:
             repr_str = "The true and estimated utilities for women"
             repr_str += "(and their standard errors) are:\n\n"
-            for i, coeff in enumerate(estimates):
+            for i, coeff in enumerate(estimates_v):
                 repr_str += f"   v_{i + 1}: {v_true[i]: > 10.3f} "
-                repr_str += f" {coeff: > 10.3f}  ({stderrs[i]: > 10.3f})\n"
+                repr_str += f" {coeff: > 10.3f}  ({stderrs_v[i]: > 10.3f})\n"
             print_stars(repr_str)
 
+        if lambda_true is not None:
+            discrepancy = npmaxabs(lambda_true - estimates_beta)
+            print_stars(f"The true-estimated discrepancy is {discrepancy}")
+            return discrepancy
 
 def _prepare_data(
     muhat: Matching,

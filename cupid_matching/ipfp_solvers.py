@@ -43,7 +43,7 @@ IPFPResults = Union[IPFPnoGradientResults, IPFPGradientResults]
 
 def _ipfp_check_sizes(
     men_margins: np.ndarray, women_margins: np.ndarray, Phi: np.ndarray
-) -> Tuple[int]:
+) -> Tuple[int, int]:
     """checks that the margins and surplus have the correct shapes and sizes"""
     X = test_vector(men_margins)
     Y = test_vector(women_margins)
@@ -60,7 +60,7 @@ def ipfp_homoskedastic_nosingles_solver(
     gr: bool = False,
     verbose: bool = False,
     maxiter: int = 1000,
-) -> IPFPnoGradientResults:
+) -> IPFPResults:
     """Solves for equilibrium in a Choo and Siow market without singles,
     given systematic surplus and margins
 
@@ -140,7 +140,7 @@ def ipfp_homoskedastic_nosingles_solver(
         der_ephi2 /= 2.0 * ephi2  # 1/2 with safeguards
         ivar = 0
         for iman in range(X):
-            rhs[iman, ivar : (ivar + Y)] = -muxy[iman, :] * der_ephi2[iman, :]
+            rhs[iman, ivar: (ivar + Y)] = -muxy[iman, :] * der_ephi2[iman, :]
             ivar += Y
         ivar1 = X
         ivar2 = 0
@@ -157,7 +157,7 @@ def ipfp_homoskedastic_nosingles_solver(
         ivar = 0
         for iman in range(X):
             dt_man = dt[iman, :]
-            dmuxy[ivar : (ivar + Y), :] = np.outer((ephi2[iman, :] * tyi), dt_man)
+            dmuxy[ivar: (ivar + Y), :] = np.outer((ephi2[iman, :] * tyi), dt_man)
             ivar += Y
         for iwoman in range(Y):
             dT_woman = dT[iwoman, :]
@@ -298,7 +298,7 @@ def ipfp_homoskedastic_solver(
         der_ephi2 /= 2.0 * ephi2  # 1/2 with safeguards
         ivar = n_sum_categories
         for iman in range(X):
-            rhs[iman, ivar : (ivar + Y)] = -muxy[iman, :] * der_ephi2[iman, :]
+            rhs[iman, ivar: (ivar + Y)] = -muxy[iman, :] * der_ephi2[iman, :]
             ivar += Y
         ivar1 = X
         ivar2 = n_sum_categories
@@ -317,7 +317,7 @@ def ipfp_homoskedastic_solver(
         ivar = 0
         for iman in range(X):
             dt_man = dt[iman, :]
-            dmuxy[ivar : (ivar + Y), :] = np.outer((ephi2[iman, :] * tyi), dt_man)
+            dmuxy[ivar: (ivar + Y), :] = np.outer((ephi2[iman, :] * tyi), dt_man)
             ivar += Y
         for iwoman in range(Y):
             dT_woman = dT[iwoman, :]
@@ -584,7 +584,7 @@ def ipfp_heteroskedastic_solver(
         #  to compute derivatives of (mux0, mu0y) wrt Phi
         ivar = n_sum_categories
         for iman in range(X):
-            rhs[iman, ivar : (ivar + Y)] = -big_a[iman, :]
+            rhs[iman, ivar: (ivar + Y)] = -big_a[iman, :]
             ivar += Y
         ivar1 = X
         ivar2 = n_sum_categories
@@ -614,7 +614,7 @@ def ipfp_heteroskedastic_solver(
         der1 = ephi2 * der_axy1 * bxy
         ivar = 0
         for iman in range(X):
-            dmuxy[ivar : (ivar + Y), :] = np.outer(der1[iman, :], dmux0[iman, :])
+            dmuxy[ivar: (ivar + Y), :] = np.outer(der1[iman, :], dmux0[iman, :])
             ivar += Y
         der2 = ephi2 * der_bxy1 * axy
         for iwoman in range(Y):
@@ -635,7 +635,7 @@ def ipfp_heteroskedastic_solver(
         ivar = 0
         ix = iend_phi
         for iman in range(X):
-            dmuxy[ivar : (ivar + Y), ix] -= big_c[iman, :]
+            dmuxy[ivar: (ivar + Y), ix] -= big_c[iman, :]
             ivar += Y
             ix += 1
         # on the derivative wrt tau_y

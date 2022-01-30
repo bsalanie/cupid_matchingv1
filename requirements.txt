@@ -5,6 +5,7 @@
  seaborn
  sklearn
  streamlit
+ pytest
 
 
  
