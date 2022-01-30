@@ -21,4 +21,5 @@ jobs:
 #                  python -m pytest tests/
             - run: python -m pip install --upgrade pip
             - run: pip install mkdocs-material mkdocstrings mkdocs-git-revision-date-plugin
+            - run: mkdocs build
             - run: mkdocs gh-deploy --force
