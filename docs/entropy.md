@@ -1,2 +1,2 @@
 # `entropy` module
-::: matching_test2.entropy
+::: cupid_matching.entropy

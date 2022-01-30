@@ -1,2 +1,2 @@
 # `matching_utils` module
-::: matching_test2.matching_utils
+::: cupid_matching.matching_utils

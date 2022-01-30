@@ -1,2 +1,2 @@
 # `ipfp_solvers` module
-::: matching_test2.ipfp_solvers
+::: cupid_matching.ipfp_solvers
