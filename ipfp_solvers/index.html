@@ -1,0 +1,1834 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://github.pages.io/bsalanie/ipfp_solvers/">
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.1.10">
+    
+    
+      
+        <title>ipfp_solvers - cupid_matching</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.d6be258b.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.e6a45f82.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/_mkdocstrings.css">
+    
+    <script>__md_scope=new URL("..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="preference" data-md-color-primary="" data-md-color-accent="">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#ipfp_solvers-module" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="cupid_matching" class="md-header__button md-logo" aria-label="cupid_matching" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            cupid_matching
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              ipfp_solvers
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/bsalanie/cupid_matching/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href=".." class="md-tabs__link">
+      Home
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="https://github.com/bsalanie/cupid_matching/issues" class="md-tabs__link">
+      Report Issues
+    </a>
+  </li>
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../min_distance/" class="md-tabs__link md-tabs__link--active">
+        API Reference
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="cupid_matching" class="md-nav__button md-logo" aria-label="cupid_matching" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    cupid_matching
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/bsalanie/cupid_matching/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://github.com/bsalanie/cupid_matching/issues" class="md-nav__link">
+        Report Issues
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          API Reference
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="API Reference" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          API Reference
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../min_distance/" class="md-nav__link">
+        min_distance
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../min_distance_utils/" class="md-nav__link">
+        min_distance_utils
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../poisson_glm/" class="md-nav__link">
+        poisson_glm
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../poisson_glm_utils/" class="md-nav__link">
+        poisson_glm_utils
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../entropy/" class="md-nav__link">
+        entropy
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../choo_siow/" class="md-nav__link">
+        choo_siow
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../choo_siow_gender_heteroskedastic/" class="md-nav__link">
+        choo_siow_gender_heteroskedastic
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../choo_siow_heteroskedastic/" class="md-nav__link">
+        choo_siow_heteroskedastic
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../nested_logit/" class="md-nav__link">
+        nested_logit
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          ipfp_solvers
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        ipfp_solvers
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#cupid_matching.ipfp_solvers" class="md-nav__link">
+    cupid_matching.ipfp_solvers
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cupid_matching.ipfp_solvers.ipfp_gender_heteroskedastic_solver" class="md-nav__link">
+    ipfp_gender_heteroskedastic_solver()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cupid_matching.ipfp_solvers.ipfp_heteroskedastic_solver" class="md-nav__link">
+    ipfp_heteroskedastic_solver()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cupid_matching.ipfp_solvers.ipfp_homoskedastic_nosingles_solver" class="md-nav__link">
+    ipfp_homoskedastic_nosingles_solver()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cupid_matching.ipfp_solvers.ipfp_homoskedastic_solver" class="md-nav__link">
+    ipfp_homoskedastic_solver()
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../matching_utils/" class="md-nav__link">
+        matching_utils
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../utils/" class="md-nav__link">
+        utils
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#cupid_matching.ipfp_solvers" class="md-nav__link">
+    cupid_matching.ipfp_solvers
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cupid_matching.ipfp_solvers.ipfp_gender_heteroskedastic_solver" class="md-nav__link">
+    ipfp_gender_heteroskedastic_solver()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cupid_matching.ipfp_solvers.ipfp_heteroskedastic_solver" class="md-nav__link">
+    ipfp_heteroskedastic_solver()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cupid_matching.ipfp_solvers.ipfp_homoskedastic_nosingles_solver" class="md-nav__link">
+    ipfp_homoskedastic_nosingles_solver()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cupid_matching.ipfp_solvers.ipfp_homoskedastic_solver" class="md-nav__link">
+    ipfp_homoskedastic_solver()
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+
+
+
+                
+<a href="https://github.com/bsalanie/cupid_matching/edit/master/docs/ipfp_solvers.md" title="Edit this page" class="md-content__button md-icon">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+</a>
+
+
+<h1 id="ipfp_solvers-module"><code>ipfp_solvers</code> module<a class="headerlink" href="#ipfp_solvers-module" title="Permanent link">&para;</a></h1>
+
+
+  <div class="doc doc-object doc-module">
+
+<a id="cupid_matching.ipfp_solvers"></a>
+    <div class="doc doc-contents first">
+
+      <p>Implementations of the IPFP algorithm to solve for equilibrium
+and do comparative statics
+in several variants of the
+<code>Choo and Siow 2006 &lt;https://www.jstor.org/stable/10.1086/498585?seq=1&gt;</code>_ model:</p>
+<ul>
+<li>homoskedastic with singles (as in Choo and Siow 2006)</li>
+<li>homoskedastic without singles</li>
+<li>gender-heteroskedastic: with a scale parameter on the error term for women</li>
+<li>gender- and type-heteroskedastic: with a scale parameter on the error term
+   for each gender and type</li>
+<li>two-level nested logit, with nests and nest parameters that do not depend on the type,
+   and {0} as the first nest</li>
+</ul>
+<p>Each solver, when fed the joint surplus and margins, returns the equilibrium matching patterns,
+the adding-up errors on the margins,
+and if requested (using <code>gr=True</code>) the derivatives of the matching patterns
+in all primitives.</p>
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h2 id="cupid_matching.ipfp_solvers.ipfp_gender_heteroskedastic_solver" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">ipfp_gender_heteroskedastic_solver</span><span class="p">(</span><span class="n">Phi</span><span class="p">,</span> <span class="n">men_margins</span><span class="p">,</span> <span class="n">women_margins</span><span class="p">,</span> <span class="n">tau</span><span class="p">,</span> <span class="n">tol</span><span class="o">=</span><span class="mf">1e-09</span><span class="p">,</span> <span class="n">gr</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">maxiter</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span></code>
+
+
+<a href="#cupid_matching.ipfp_solvers.ipfp_gender_heteroskedastic_solver" class="headerlink" title="Permanent link">&para;</a></h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Solves for equilibrium in a in a gender-heteroskedastic Choo and Siow market
+given systematic surplus and margins and a scale parameter <code>tau</code></p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>Phi</code></td>
+        <td><code>&lt;built-in function array&gt;</code></td>
+        <td><p>matrix of systematic surplus, shape (X, Y)</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>men_margins</code></td>
+        <td><code>&lt;built-in function array&gt;</code></td>
+        <td><p>vector of men margins, shape (X)</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>women_margins</code></td>
+        <td><code>&lt;built-in function array&gt;</code></td>
+        <td><p>vector of women margins, shape (Y)</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>tau</code></td>
+        <td><code>float</code></td>
+        <td><p>the standard error for all women</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>tol</code></td>
+        <td><code>float</code></td>
+        <td><p>tolerance on change in solution</p></td>
+        <td><code>1e-09</code></td>
+      </tr>
+      <tr>
+        <td><code>gr</code></td>
+        <td><code>bool</code></td>
+        <td><p>if <code>True</code>, also evaluate derivatives of the matching patterns</p></td>
+        <td><code>False</code></td>
+      </tr>
+      <tr>
+        <td><code>verbose</code></td>
+        <td><code>bool</code></td>
+        <td><p>if <code>True</code>, prints information</p></td>
+        <td><code>False</code></td>
+      </tr>
+      <tr>
+        <td><code>maxiter</code></td>
+        <td><code>int</code></td>
+        <td><p>maximum number of iterations</p></td>
+        <td><code>1000</code></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>(muxy, mux0, mu0y)</code></td>
+      <td><p>the matching patterns
+marg_err_x, marg_err_y: the errors on the margins
+and the gradients of the matching patterns
+wrt (men_margins, women_margins, Phi, tau) if <code>gr</code> is <code>True</code></p></td>
+    </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>cupid_matching/ipfp_solvers.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">ipfp_gender_heteroskedastic_solver</span><span class="p">(</span>
+    <span class="n">Phi</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">,</span>
+    <span class="n">men_margins</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">,</span>
+    <span class="n">women_margins</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">,</span>
+    <span class="n">tau</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+    <span class="n">tol</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1e-9</span><span class="p">,</span>
+    <span class="n">gr</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="n">verbose</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="n">maxiter</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1000</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">IPFPResults</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Solves for equilibrium in a in a gender-heteroskedastic Choo and Siow market</span>
+<span class="sd">    given systematic surplus and margins and a scale parameter `tau`</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        Phi: matrix of systematic surplus, shape (X, Y)</span>
+<span class="sd">        men_margins: vector of men margins, shape (X)</span>
+<span class="sd">        women_margins: vector of women margins, shape (Y)</span>
+<span class="sd">        tau: the standard error for all women</span>
+<span class="sd">        tol: tolerance on change in solution</span>
+<span class="sd">        gr: if `True`, also evaluate derivatives of the matching patterns</span>
+<span class="sd">        verbose: if `True`, prints information</span>
+<span class="sd">        maxiter: maximum number of iterations</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">         (muxy, mux0, mu0y): the matching patterns</span>
+<span class="sd">         marg_err_x, marg_err_y: the errors on the margins</span>
+<span class="sd">         and the gradients of the matching patterns</span>
+<span class="sd">         wrt (men_margins, women_margins, Phi, tau) if `gr` is `True`</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">X</span><span class="p">,</span> <span class="n">Y</span> <span class="o">=</span> <span class="n">_ipfp_check_sizes</span><span class="p">(</span><span class="n">men_margins</span><span class="p">,</span> <span class="n">women_margins</span><span class="p">,</span> <span class="n">Phi</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">tau</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">bs_error_abort</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;We need a positive tau, not </span><span class="si">{</span><span class="n">tau</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="c1">#############################################################################</span>
+    <span class="c1"># we use ipfp_heteroxy_solver with sigma_x = 1 and tau_y = tau</span>
+    <span class="c1">#############################################################################</span>
+
+    <span class="n">sigma_x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+    <span class="n">tau_y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">tau</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">gr</span><span class="p">:</span>
+        <span class="n">mus_hxy</span><span class="p">,</span> <span class="n">marg_err_x</span><span class="p">,</span> <span class="n">marg_err_y</span><span class="p">,</span> <span class="n">dmus_hxy</span> <span class="o">=</span> <span class="n">ipfp_heteroskedastic_solver</span><span class="p">(</span>
+            <span class="n">Phi</span><span class="p">,</span>
+            <span class="n">men_margins</span><span class="p">,</span>
+            <span class="n">women_margins</span><span class="p">,</span>
+            <span class="n">sigma_x</span><span class="p">,</span>
+            <span class="n">tau_y</span><span class="p">,</span>
+            <span class="n">tol</span><span class="o">=</span><span class="n">tol</span><span class="p">,</span>
+            <span class="n">gr</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+            <span class="n">maxiter</span><span class="o">=</span><span class="n">maxiter</span><span class="p">,</span>
+            <span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">muxy</span><span class="p">,</span> <span class="n">mux0</span><span class="p">,</span> <span class="n">mu0y</span> <span class="o">=</span> <span class="n">mus_hxy</span>
+        <span class="n">dmus_xy</span><span class="p">,</span> <span class="n">dmus_x0</span><span class="p">,</span> <span class="n">dmus_0y</span> <span class="o">=</span> <span class="n">dmus_hxy</span>
+        <span class="n">n_sum_categories</span> <span class="o">=</span> <span class="n">X</span> <span class="o">+</span> <span class="n">Y</span>
+        <span class="n">n_prod_categories</span> <span class="o">=</span> <span class="n">X</span> <span class="o">*</span> <span class="n">Y</span>
+        <span class="n">n_cols</span> <span class="o">=</span> <span class="n">n_sum_categories</span> <span class="o">+</span> <span class="n">n_prod_categories</span>
+        <span class="n">itau_y</span> <span class="o">=</span> <span class="n">n_cols</span> <span class="o">+</span> <span class="n">X</span>
+        <span class="n">dmuxy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">n_prod_categories</span><span class="p">,</span> <span class="n">n_cols</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
+        <span class="n">dmuxy</span><span class="p">[:,</span> <span class="p">:</span><span class="n">n_cols</span><span class="p">]</span> <span class="o">=</span> <span class="n">dmus_xy</span><span class="p">[:,</span> <span class="p">:</span><span class="n">n_cols</span><span class="p">]</span>
+        <span class="n">dmuxy</span><span class="p">[:,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">dmus_xy</span><span class="p">[:,</span> <span class="n">itau_y</span><span class="p">:],</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">dmux0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">X</span><span class="p">,</span> <span class="n">n_cols</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
+        <span class="n">dmux0</span><span class="p">[:,</span> <span class="p">:</span><span class="n">n_cols</span><span class="p">]</span> <span class="o">=</span> <span class="n">dmus_x0</span><span class="p">[:,</span> <span class="p">:</span><span class="n">n_cols</span><span class="p">]</span>
+        <span class="n">dmux0</span><span class="p">[:,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">dmus_x0</span><span class="p">[:,</span> <span class="n">itau_y</span><span class="p">:],</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">dmu0y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">Y</span><span class="p">,</span> <span class="n">n_cols</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
+        <span class="n">dmu0y</span><span class="p">[:,</span> <span class="p">:</span><span class="n">n_cols</span><span class="p">]</span> <span class="o">=</span> <span class="n">dmus_0y</span><span class="p">[:,</span> <span class="p">:</span><span class="n">n_cols</span><span class="p">]</span>
+        <span class="n">dmu0y</span><span class="p">[:,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">dmus_0y</span><span class="p">[:,</span> <span class="n">itau_y</span><span class="p">:],</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">muxy</span><span class="p">,</span> <span class="n">mux0</span><span class="p">,</span> <span class="n">mu0y</span><span class="p">),</span> <span class="n">marg_err_x</span><span class="p">,</span> <span class="n">marg_err_y</span><span class="p">,</span> <span class="p">(</span><span class="n">dmuxy</span><span class="p">,</span> <span class="n">dmux0</span><span class="p">,</span> <span class="n">dmu0y</span><span class="p">)</span>
+
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">ipfp_heteroskedastic_solver</span><span class="p">(</span>
+            <span class="n">Phi</span><span class="p">,</span>
+            <span class="n">men_margins</span><span class="p">,</span>
+            <span class="n">women_margins</span><span class="p">,</span>
+            <span class="n">sigma_x</span><span class="p">,</span>
+            <span class="n">tau_y</span><span class="p">,</span>
+            <span class="n">tol</span><span class="o">=</span><span class="n">tol</span><span class="p">,</span>
+            <span class="n">gr</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+            <span class="n">maxiter</span><span class="o">=</span><span class="n">maxiter</span><span class="p">,</span>
+            <span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">,</span>
+        <span class="p">)</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h2 id="cupid_matching.ipfp_solvers.ipfp_heteroskedastic_solver" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">ipfp_heteroskedastic_solver</span><span class="p">(</span><span class="n">Phi</span><span class="p">,</span> <span class="n">men_margins</span><span class="p">,</span> <span class="n">women_margins</span><span class="p">,</span> <span class="n">sigma_x</span><span class="p">,</span> <span class="n">tau_y</span><span class="p">,</span> <span class="n">tol</span><span class="o">=</span><span class="mf">1e-09</span><span class="p">,</span> <span class="n">gr</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">maxiter</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span></code>
+
+
+<a href="#cupid_matching.ipfp_solvers.ipfp_heteroskedastic_solver" class="headerlink" title="Permanent link">&para;</a></h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Solves for equilibrium in a in a fully heteroskedastic Choo and Siow market
+given systematic surplus and margins
+and standard errors <code>sigma_x</code> and <code>tau_y</code></p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>Phi</code></td>
+        <td><code>&lt;built-in function array&gt;</code></td>
+        <td><p>matrix of systematic surplus, shape (X, Y)</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>men_margins</code></td>
+        <td><code>&lt;built-in function array&gt;</code></td>
+        <td><p>vector of men margins, shape (X)</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>women_margins</code></td>
+        <td><code>&lt;built-in function array&gt;</code></td>
+        <td><p>vector of women margins, shape (Y)</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>sigma_x</code></td>
+        <td><code>&lt;built-in function array&gt;</code></td>
+        <td><p>the vector of standard errors for the X types of men</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>sigma_x</code></td>
+        <td><code>&lt;built-in function array&gt;</code></td>
+        <td><p>the vector of standard errors for Y types of women</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>tol</code></td>
+        <td><code>float</code></td>
+        <td><p>tolerance on change in solution</p></td>
+        <td><code>1e-09</code></td>
+      </tr>
+      <tr>
+        <td><code>gr</code></td>
+        <td><code>bool</code></td>
+        <td><p>if <code>True</code>, also evaluate derivatives of the matching patterns</p></td>
+        <td><code>False</code></td>
+      </tr>
+      <tr>
+        <td><code>verbose</code></td>
+        <td><code>bool</code></td>
+        <td><p>if <code>True</code>, prints information</p></td>
+        <td><code>False</code></td>
+      </tr>
+      <tr>
+        <td><code>maxiter</code></td>
+        <td><code>int</code></td>
+        <td><p>maximum number of iterations</p></td>
+        <td><code>1000</code></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>(muxy, mux0, mu0y)</code></td>
+      <td><p>the matching patterns
+marg_err_x, marg_err_y: the errors on the margins
+and the gradients of the matching patterns
+wrt (men_margins, women_margins, Phi, sigma_x, tau_y)
+if <code>gr</code> is <code>True</code></p></td>
+    </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>cupid_matching/ipfp_solvers.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">ipfp_heteroskedastic_solver</span><span class="p">(</span>
+    <span class="n">Phi</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">,</span>
+    <span class="n">men_margins</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">,</span>
+    <span class="n">women_margins</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">,</span>
+    <span class="n">sigma_x</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">,</span>
+    <span class="n">tau_y</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">,</span>
+    <span class="n">tol</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1e-9</span><span class="p">,</span>
+    <span class="n">gr</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="n">verbose</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="n">maxiter</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1000</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">IPFPResults</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Solves for equilibrium in a in a fully heteroskedastic Choo and Siow market</span>
+<span class="sd">    given systematic surplus and margins</span>
+<span class="sd">    and standard errors `sigma_x` and `tau_y`</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        Phi: matrix of systematic surplus, shape (X, Y)</span>
+<span class="sd">        men_margins: vector of men margins, shape (X)</span>
+<span class="sd">        women_margins: vector of women margins, shape (Y)</span>
+<span class="sd">        sigma_x: the vector of standard errors for the X types of men</span>
+<span class="sd">        sigma_x: the vector of standard errors for Y types of women</span>
+<span class="sd">        tol: tolerance on change in solution</span>
+<span class="sd">        gr: if `True`, also evaluate derivatives of the matching patterns</span>
+<span class="sd">        verbose: if `True`, prints information</span>
+<span class="sd">        maxiter: maximum number of iterations</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">         (muxy, mux0, mu0y): the matching patterns</span>
+<span class="sd">         marg_err_x, marg_err_y: the errors on the margins</span>
+<span class="sd">         and the gradients of the matching patterns</span>
+<span class="sd">         wrt (men_margins, women_margins, Phi, sigma_x, tau_y)</span>
+<span class="sd">         if `gr` is `True`</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">X</span><span class="p">,</span> <span class="n">Y</span> <span class="o">=</span> <span class="n">_ipfp_check_sizes</span><span class="p">(</span><span class="n">men_margins</span><span class="p">,</span> <span class="n">women_margins</span><span class="p">,</span> <span class="n">Phi</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">sigma_x</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mf">0.0</span><span class="p">:</span>
+        <span class="n">bs_error_abort</span><span class="p">(</span><span class="s2">&quot;All elements of sigma_x must be positive&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">tau_y</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mf">0.0</span><span class="p">:</span>
+        <span class="n">bs_error_abort</span><span class="p">(</span><span class="s2">&quot;All elements of tau_y must be positive&quot;</span><span class="p">)</span>
+
+    <span class="n">sumxy1</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">add</span><span class="o">.</span><span class="n">outer</span><span class="p">(</span><span class="n">sigma_x</span><span class="p">,</span> <span class="n">tau_y</span><span class="p">)</span>
+    <span class="n">ephi2</span><span class="p">,</span> <span class="n">der_ephi2</span> <span class="o">=</span> <span class="n">npexp</span><span class="p">(</span><span class="n">Phi</span> <span class="o">*</span> <span class="n">sumxy1</span><span class="p">,</span> <span class="n">deriv</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="c1">#############################################################################</span>
+    <span class="c1"># we solve the equilibrium equations muxy = ephi2 * tx * ty</span>
+    <span class="c1">#   with tx = mux0^(sigma_x/(sigma_x + tau_max))</span>
+    <span class="c1">#   and ty = mu0y^(tau_y/(sigma_max + tau_y))</span>
+    <span class="c1">#   starting with a reasonable initial point for tx and ty: tx = ty = bigc</span>
+    <span class="c1">#   it is important that it fit the number of individuals</span>
+    <span class="c1">#############################################################################</span>
+
+    <span class="n">nindivs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">men_margins</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">women_margins</span><span class="p">)</span>
+    <span class="n">bigc</span> <span class="o">=</span> <span class="n">nindivs</span> <span class="o">/</span> <span class="p">(</span><span class="n">X</span> <span class="o">+</span> <span class="n">Y</span> <span class="o">+</span> <span class="mf">2.0</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">ephi2</span><span class="p">))</span>
+    <span class="c1"># we find the largest values of sigma_x and tau_y</span>
+    <span class="n">xmax</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">sigma_x</span><span class="p">)</span>
+    <span class="n">sigma_max</span> <span class="o">=</span> <span class="n">sigma_x</span><span class="p">[</span><span class="n">xmax</span><span class="p">]</span>
+    <span class="n">ymax</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">tau_y</span><span class="p">)</span>
+    <span class="n">tau_max</span> <span class="o">=</span> <span class="n">tau_y</span><span class="p">[</span><span class="n">ymax</span><span class="p">]</span>
+    <span class="c1"># we use tx = mux0^(sigma_x/(sigma_x + tau_max))</span>
+    <span class="c1">#    and ty = mu0y^(tau_y/(sigma_max + tau_y))</span>
+    <span class="n">sig_taumax</span> <span class="o">=</span> <span class="n">sigma_x</span> <span class="o">+</span> <span class="n">tau_max</span>
+    <span class="n">txi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="n">bigc</span><span class="p">,</span> <span class="n">sigma_x</span> <span class="o">/</span> <span class="n">sig_taumax</span><span class="p">)</span>
+    <span class="n">sigmax_tau</span> <span class="o">=</span> <span class="n">tau_y</span> <span class="o">+</span> <span class="n">sigma_max</span>
+    <span class="n">tyi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="n">bigc</span><span class="p">,</span> <span class="n">tau_y</span> <span class="o">/</span> <span class="n">sigmax_tau</span><span class="p">)</span>
+    <span class="n">err_diff</span> <span class="o">=</span> <span class="n">bigc</span>
+    <span class="n">tol_diff</span> <span class="o">=</span> <span class="n">tol</span> <span class="o">*</span> <span class="n">bigc</span>
+    <span class="n">tol_newton</span> <span class="o">=</span> <span class="n">tol</span>
+    <span class="n">niter</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">err_diff</span> <span class="o">&gt;</span> <span class="n">tol_diff</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">niter</span> <span class="o">&lt;</span> <span class="n">maxiter</span><span class="p">):</span>  <span class="c1"># IPFP main loop</span>
+        <span class="c1"># Newton iterates for men</span>
+        <span class="n">err_newton</span> <span class="o">=</span> <span class="n">bigc</span>
+        <span class="n">txin</span> <span class="o">=</span> <span class="n">txi</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="n">mu0y_in</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="n">tyi</span><span class="p">,</span> <span class="n">sigmax_tau</span><span class="p">),</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="n">tau_y</span><span class="p">)</span>
+        <span class="k">while</span> <span class="n">err_newton</span> <span class="o">&gt;</span> <span class="n">tol_newton</span><span class="p">:</span>
+            <span class="n">txit</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="n">txin</span><span class="p">,</span> <span class="n">sig_taumax</span><span class="p">)</span>
+            <span class="n">mux0_in</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="n">txit</span><span class="p">,</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="n">sigma_x</span><span class="p">)</span>
+            <span class="n">out_xy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">outer</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="n">mux0_in</span><span class="p">,</span> <span class="n">sigma_x</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="n">mu0y_in</span><span class="p">,</span> <span class="n">tau_y</span><span class="p">))</span>
+            <span class="n">muxy_in</span> <span class="o">=</span> <span class="n">ephi2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="n">out_xy</span><span class="p">,</span> <span class="n">sumxy1</span><span class="p">)</span>
+            <span class="n">errxi</span> <span class="o">=</span> <span class="n">mux0_in</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">muxy_in</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">-</span> <span class="n">men_margins</span>
+            <span class="n">err_newton</span> <span class="o">=</span> <span class="n">npmaxabs</span><span class="p">(</span><span class="n">errxi</span><span class="p">)</span>
+            <span class="n">txin</span> <span class="o">-=</span> <span class="n">errxi</span> <span class="o">/</span> <span class="p">(</span>
+                <span class="n">sig_taumax</span> <span class="o">*</span> <span class="p">(</span><span class="n">mux0_in</span> <span class="o">/</span> <span class="n">sigma_x</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">sumxy1</span> <span class="o">*</span> <span class="n">muxy_in</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span> <span class="o">/</span> <span class="n">txin</span>
+            <span class="p">)</span>
+        <span class="n">tx</span> <span class="o">=</span> <span class="n">txin</span>
+
+        <span class="c1"># Newton iterates for women</span>
+        <span class="n">err_newton</span> <span class="o">=</span> <span class="n">bigc</span>
+        <span class="n">tyin</span> <span class="o">=</span> <span class="n">tyi</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="n">mux0_in</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="n">tx</span><span class="p">,</span> <span class="n">sig_taumax</span><span class="p">),</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="n">sigma_x</span><span class="p">)</span>
+        <span class="k">while</span> <span class="n">err_newton</span> <span class="o">&gt;</span> <span class="n">tol_newton</span><span class="p">:</span>
+            <span class="n">tyit</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="n">tyin</span><span class="p">,</span> <span class="n">sigmax_tau</span><span class="p">)</span>
+            <span class="n">mu0y_in</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="n">tyit</span><span class="p">,</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="n">tau_y</span><span class="p">)</span>
+            <span class="n">out_xy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">outer</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="n">mux0_in</span><span class="p">,</span> <span class="n">sigma_x</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="n">mu0y_in</span><span class="p">,</span> <span class="n">tau_y</span><span class="p">))</span>
+            <span class="n">muxy_in</span> <span class="o">=</span> <span class="n">ephi2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="n">out_xy</span><span class="p">,</span> <span class="n">sumxy1</span><span class="p">)</span>
+            <span class="n">erryi</span> <span class="o">=</span> <span class="n">mu0y_in</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">muxy_in</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">-</span> <span class="n">women_margins</span>
+            <span class="n">err_newton</span> <span class="o">=</span> <span class="n">npmaxabs</span><span class="p">(</span><span class="n">erryi</span><span class="p">)</span>
+            <span class="n">tyin</span> <span class="o">-=</span> <span class="n">erryi</span> <span class="o">/</span> <span class="p">(</span>
+                <span class="n">sigmax_tau</span> <span class="o">*</span> <span class="p">(</span><span class="n">mu0y_in</span> <span class="o">/</span> <span class="n">tau_y</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">sumxy1</span> <span class="o">*</span> <span class="n">muxy_in</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span> <span class="o">/</span> <span class="n">tyin</span>
+            <span class="p">)</span>
+
+        <span class="n">ty</span> <span class="o">=</span> <span class="n">tyin</span>
+
+        <span class="n">err_x</span> <span class="o">=</span> <span class="n">npmaxabs</span><span class="p">(</span><span class="n">tx</span> <span class="o">-</span> <span class="n">txi</span><span class="p">)</span>
+        <span class="n">err_y</span> <span class="o">=</span> <span class="n">npmaxabs</span><span class="p">(</span><span class="n">ty</span> <span class="o">-</span> <span class="n">tyi</span><span class="p">)</span>
+        <span class="n">err_diff</span> <span class="o">=</span> <span class="n">err_x</span> <span class="o">+</span> <span class="n">err_y</span>
+
+        <span class="n">txi</span> <span class="o">=</span> <span class="n">tx</span>
+        <span class="n">tyi</span> <span class="o">=</span> <span class="n">ty</span>
+
+        <span class="n">niter</span> <span class="o">+=</span> <span class="mi">1</span>
+
+    <span class="n">mux0</span> <span class="o">=</span> <span class="n">mux0_in</span>
+    <span class="n">mu0y</span> <span class="o">=</span> <span class="n">mu0y_in</span>
+    <span class="n">muxy</span> <span class="o">=</span> <span class="n">muxy_in</span>
+    <span class="n">marg_err_x</span> <span class="o">=</span> <span class="n">mux0</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">muxy</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">-</span> <span class="n">men_margins</span>
+    <span class="n">marg_err_y</span> <span class="o">=</span> <span class="n">mu0y</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">muxy</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">-</span> <span class="n">women_margins</span>
+
+    <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;After </span><span class="si">{</span><span class="n">niter</span><span class="si">}</span><span class="s2"> iterations:&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">Margin error on x: </span><span class="si">{</span><span class="n">npmaxabs</span><span class="p">(</span><span class="n">marg_err_x</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">Margin error on y: </span><span class="si">{</span><span class="n">npmaxabs</span><span class="p">(</span><span class="n">marg_err_y</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">gr</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">muxy</span><span class="p">,</span> <span class="n">mux0</span><span class="p">,</span> <span class="n">mu0y</span><span class="p">),</span> <span class="n">marg_err_x</span><span class="p">,</span> <span class="n">marg_err_y</span>
+    <span class="k">else</span><span class="p">:</span>  <span class="c1"># we compute the derivatives</span>
+        <span class="n">n_sum_categories</span> <span class="o">=</span> <span class="n">X</span> <span class="o">+</span> <span class="n">Y</span>
+        <span class="n">n_prod_categories</span> <span class="o">=</span> <span class="n">X</span> <span class="o">*</span> <span class="n">Y</span>
+        <span class="c1"># we work directly with (mux0, mu0y)</span>
+        <span class="n">sigrat_xy</span> <span class="o">=</span> <span class="n">sumxy1</span> <span class="o">*</span> <span class="n">sigma_x</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+        <span class="n">taurat_xy</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">-</span> <span class="n">sigrat_xy</span>
+        <span class="n">mux0_mat</span> <span class="o">=</span> <span class="n">nprepeat_col</span><span class="p">(</span><span class="n">mux0</span><span class="p">,</span> <span class="n">Y</span><span class="p">)</span>
+        <span class="n">mu0y_mat</span> <span class="o">=</span> <span class="n">nprepeat_row</span><span class="p">(</span><span class="n">mu0y</span><span class="p">,</span> <span class="n">X</span><span class="p">)</span>
+        <span class="c1"># muxy = axy * bxy * ephi2</span>
+        <span class="n">axy</span> <span class="o">=</span> <span class="n">nppow</span><span class="p">(</span><span class="n">mux0_mat</span><span class="p">,</span> <span class="n">sigrat_xy</span><span class="p">)</span>
+        <span class="n">bxy</span> <span class="o">=</span> <span class="n">nppow</span><span class="p">(</span><span class="n">mu0y_mat</span><span class="p">,</span> <span class="n">taurat_xy</span><span class="p">)</span>
+        <span class="n">der_axy1</span><span class="p">,</span> <span class="n">der_axy2</span> <span class="o">=</span> <span class="n">der_nppow</span><span class="p">(</span><span class="n">mux0_mat</span><span class="p">,</span> <span class="n">sigrat_xy</span><span class="p">)</span>
+        <span class="n">der_bxy1</span><span class="p">,</span> <span class="n">der_bxy2</span> <span class="o">=</span> <span class="n">der_nppow</span><span class="p">(</span><span class="n">mu0y_mat</span><span class="p">,</span> <span class="n">taurat_xy</span><span class="p">)</span>
+        <span class="n">der_axy1_rat</span><span class="p">,</span> <span class="n">der_axy2_rat</span> <span class="o">=</span> <span class="n">der_axy1</span> <span class="o">/</span> <span class="n">axy</span><span class="p">,</span> <span class="n">der_axy2</span> <span class="o">/</span> <span class="n">axy</span>
+        <span class="n">der_bxy1_rat</span><span class="p">,</span> <span class="n">der_bxy2_rat</span> <span class="o">=</span> <span class="n">der_bxy1</span> <span class="o">/</span> <span class="n">bxy</span><span class="p">,</span> <span class="n">der_bxy2</span> <span class="o">/</span> <span class="n">bxy</span>
+
+        <span class="c1"># start with the LHS of the linear system on (dmux0, dmu0y)</span>
+        <span class="n">lhs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">n_sum_categories</span><span class="p">,</span> <span class="n">n_sum_categories</span><span class="p">))</span>
+        <span class="n">lhs</span><span class="p">[:</span><span class="n">X</span><span class="p">,</span> <span class="p">:</span><span class="n">X</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="mf">1.0</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">muxy</span> <span class="o">*</span> <span class="n">der_axy1_rat</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+        <span class="n">lhs</span><span class="p">[:</span><span class="n">X</span><span class="p">,</span> <span class="n">X</span><span class="p">:]</span> <span class="o">=</span> <span class="n">muxy</span> <span class="o">*</span> <span class="n">der_bxy1_rat</span>
+        <span class="n">lhs</span><span class="p">[</span><span class="n">X</span><span class="p">:,</span> <span class="n">X</span><span class="p">:]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="mf">1.0</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">muxy</span> <span class="o">*</span> <span class="n">der_bxy1_rat</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+        <span class="n">lhs</span><span class="p">[</span><span class="n">X</span><span class="p">:,</span> <span class="p">:</span><span class="n">X</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">muxy</span> <span class="o">*</span> <span class="n">der_axy1_rat</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
+
+        <span class="c1"># now fill the RHS (derivatives wrt men_margins, then men_margins,</span>
+        <span class="c1">#    then Phi, then sigma_x and tau_y)</span>
+        <span class="n">n_cols_rhs</span> <span class="o">=</span> <span class="n">n_sum_categories</span> <span class="o">+</span> <span class="n">n_prod_categories</span> <span class="o">+</span> <span class="n">X</span> <span class="o">+</span> <span class="n">Y</span>
+        <span class="n">rhs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">n_sum_categories</span><span class="p">,</span> <span class="n">n_cols_rhs</span><span class="p">))</span>
+
+        <span class="c1">#  to compute derivatives of (mux0, mu0y) wrt men_margins</span>
+        <span class="n">rhs</span><span class="p">[:</span><span class="n">X</span><span class="p">,</span> <span class="p">:</span><span class="n">X</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+        <span class="c1">#  to compute derivatives of (mux0, mu0y) wrt women_margins</span>
+        <span class="n">rhs</span><span class="p">[</span><span class="n">X</span><span class="p">:,</span> <span class="n">X</span><span class="p">:</span><span class="n">n_sum_categories</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">Y</span><span class="p">)</span>
+
+        <span class="c1">#   the next line is sumxy1 with safeguards</span>
+        <span class="n">sumxy1_safe</span> <span class="o">=</span> <span class="n">sumxy1</span> <span class="o">*</span> <span class="n">der_ephi2</span> <span class="o">/</span> <span class="n">ephi2</span>
+
+        <span class="n">big_a</span> <span class="o">=</span> <span class="n">muxy</span> <span class="o">*</span> <span class="n">sumxy1_safe</span>
+        <span class="n">big_b</span> <span class="o">=</span> <span class="n">der_axy2_rat</span> <span class="o">-</span> <span class="n">der_bxy2_rat</span>
+        <span class="n">b_mu_s</span> <span class="o">=</span> <span class="n">big_b</span> <span class="o">*</span> <span class="n">muxy</span> <span class="o">*</span> <span class="n">sumxy1</span>
+        <span class="n">a_phi</span> <span class="o">=</span> <span class="n">Phi</span> <span class="o">*</span> <span class="n">big_a</span>
+        <span class="n">big_c</span> <span class="o">=</span> <span class="n">sumxy1</span> <span class="o">*</span> <span class="p">(</span><span class="n">a_phi</span> <span class="o">-</span> <span class="n">b_mu_s</span> <span class="o">*</span> <span class="n">tau_y</span><span class="p">)</span>
+        <span class="n">big_d</span> <span class="o">=</span> <span class="n">sumxy1</span> <span class="o">*</span> <span class="p">(</span><span class="n">a_phi</span> <span class="o">+</span> <span class="n">b_mu_s</span> <span class="o">*</span> <span class="n">sigma_x</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)))</span>
+
+        <span class="c1">#  to compute derivatives of (mux0, mu0y) wrt Phi</span>
+        <span class="n">ivar</span> <span class="o">=</span> <span class="n">n_sum_categories</span>
+        <span class="k">for</span> <span class="n">iman</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">X</span><span class="p">):</span>
+            <span class="n">rhs</span><span class="p">[</span><span class="n">iman</span><span class="p">,</span> <span class="n">ivar</span><span class="p">:</span> <span class="p">(</span><span class="n">ivar</span> <span class="o">+</span> <span class="n">Y</span><span class="p">)]</span> <span class="o">=</span> <span class="o">-</span><span class="n">big_a</span><span class="p">[</span><span class="n">iman</span><span class="p">,</span> <span class="p">:]</span>
+            <span class="n">ivar</span> <span class="o">+=</span> <span class="n">Y</span>
+        <span class="n">ivar1</span> <span class="o">=</span> <span class="n">X</span>
+        <span class="n">ivar2</span> <span class="o">=</span> <span class="n">n_sum_categories</span>
+        <span class="n">iend_phi</span> <span class="o">=</span> <span class="n">n_sum_categories</span> <span class="o">+</span> <span class="n">n_prod_categories</span>
+        <span class="k">for</span> <span class="n">iwoman</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">Y</span><span class="p">):</span>
+            <span class="n">rhs</span><span class="p">[</span><span class="n">ivar1</span><span class="p">,</span> <span class="n">ivar2</span><span class="p">:</span><span class="n">iend_phi</span><span class="p">:</span><span class="n">Y</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="n">big_a</span><span class="p">[:,</span> <span class="n">iwoman</span><span class="p">]</span>
+            <span class="n">ivar1</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="n">ivar2</span> <span class="o">+=</span> <span class="mi">1</span>
+
+        <span class="c1">#  to compute derivatives of (mux0, mu0y) wrt sigma_x</span>
+        <span class="n">iend_sig</span> <span class="o">=</span> <span class="n">iend_phi</span> <span class="o">+</span> <span class="n">X</span>
+        <span class="n">der_sigx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">big_c</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">rhs</span><span class="p">[:</span><span class="n">X</span><span class="p">,</span> <span class="n">iend_phi</span><span class="p">:</span><span class="n">iend_sig</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">der_sigx</span><span class="p">)</span>
+        <span class="n">rhs</span><span class="p">[</span><span class="n">X</span><span class="p">:,</span> <span class="n">iend_phi</span><span class="p">:</span><span class="n">iend_sig</span><span class="p">]</span> <span class="o">=</span> <span class="n">big_c</span><span class="o">.</span><span class="n">T</span>
+        <span class="c1">#  to compute derivatives of (mux0, mu0y) wrt tau_y</span>
+        <span class="n">der_tauy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">big_d</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="n">rhs</span><span class="p">[</span><span class="n">X</span><span class="p">:,</span> <span class="n">iend_sig</span><span class="p">:]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">der_tauy</span><span class="p">)</span>
+        <span class="n">rhs</span><span class="p">[:</span><span class="n">X</span><span class="p">,</span> <span class="n">iend_sig</span><span class="p">:]</span> <span class="o">=</span> <span class="n">big_d</span>
+
+        <span class="c1"># solve for the derivatives of mux0 and mu0y</span>
+        <span class="n">dmu0</span> <span class="o">=</span> <span class="n">spla</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">lhs</span><span class="p">,</span> <span class="n">rhs</span><span class="p">)</span>
+        <span class="n">dmux0</span> <span class="o">=</span> <span class="n">dmu0</span><span class="p">[:</span><span class="n">X</span><span class="p">,</span> <span class="p">:]</span>
+        <span class="n">dmu0y</span> <span class="o">=</span> <span class="n">dmu0</span><span class="p">[</span><span class="n">X</span><span class="p">:,</span> <span class="p">:]</span>
+
+        <span class="c1"># now construct the derivatives of muxy</span>
+        <span class="n">dmuxy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">n_prod_categories</span><span class="p">,</span> <span class="n">n_cols_rhs</span><span class="p">))</span>
+        <span class="n">der1</span> <span class="o">=</span> <span class="n">ephi2</span> <span class="o">*</span> <span class="n">der_axy1</span> <span class="o">*</span> <span class="n">bxy</span>
+        <span class="n">ivar</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">for</span> <span class="n">iman</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">X</span><span class="p">):</span>
+            <span class="n">dmuxy</span><span class="p">[</span><span class="n">ivar</span><span class="p">:</span> <span class="p">(</span><span class="n">ivar</span> <span class="o">+</span> <span class="n">Y</span><span class="p">),</span> <span class="p">:]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">outer</span><span class="p">(</span><span class="n">der1</span><span class="p">[</span><span class="n">iman</span><span class="p">,</span> <span class="p">:],</span> <span class="n">dmux0</span><span class="p">[</span><span class="n">iman</span><span class="p">,</span> <span class="p">:])</span>
+            <span class="n">ivar</span> <span class="o">+=</span> <span class="n">Y</span>
+        <span class="n">der2</span> <span class="o">=</span> <span class="n">ephi2</span> <span class="o">*</span> <span class="n">der_bxy1</span> <span class="o">*</span> <span class="n">axy</span>
+        <span class="k">for</span> <span class="n">iwoman</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">Y</span><span class="p">):</span>
+            <span class="n">dmuxy</span><span class="p">[</span><span class="n">iwoman</span><span class="p">:</span><span class="n">n_prod_categories</span><span class="p">:</span><span class="n">Y</span><span class="p">,</span> <span class="p">:]</span> <span class="o">+=</span> <span class="n">np</span><span class="o">.</span><span class="n">outer</span><span class="p">(</span>
+                <span class="n">der2</span><span class="p">[:,</span> <span class="n">iwoman</span><span class="p">],</span> <span class="n">dmu0y</span><span class="p">[</span><span class="n">iwoman</span><span class="p">,</span> <span class="p">:]</span>
+            <span class="p">)</span>
+
+        <span class="c1"># add the terms that comes from differentiating ephi2</span>
+        <span class="c1">#  on the derivative wrt Phi</span>
+        <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">j</span> <span class="o">=</span> <span class="n">n_sum_categories</span>
+        <span class="k">for</span> <span class="n">iman</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">X</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">iwoman</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">Y</span><span class="p">):</span>
+                <span class="n">dmuxy</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">+=</span> <span class="n">big_a</span><span class="p">[</span><span class="n">iman</span><span class="p">,</span> <span class="n">iwoman</span><span class="p">]</span>
+                <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+                <span class="n">j</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="c1">#  on the derivative wrt sigma_x</span>
+        <span class="n">ivar</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">ix</span> <span class="o">=</span> <span class="n">iend_phi</span>
+        <span class="k">for</span> <span class="n">iman</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">X</span><span class="p">):</span>
+            <span class="n">dmuxy</span><span class="p">[</span><span class="n">ivar</span><span class="p">:</span> <span class="p">(</span><span class="n">ivar</span> <span class="o">+</span> <span class="n">Y</span><span class="p">),</span> <span class="n">ix</span><span class="p">]</span> <span class="o">-=</span> <span class="n">big_c</span><span class="p">[</span><span class="n">iman</span><span class="p">,</span> <span class="p">:]</span>
+            <span class="n">ivar</span> <span class="o">+=</span> <span class="n">Y</span>
+            <span class="n">ix</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="c1"># on the derivative wrt tau_y</span>
+        <span class="n">iy</span> <span class="o">=</span> <span class="n">iend_sig</span>
+        <span class="k">for</span> <span class="n">iwoman</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">Y</span><span class="p">):</span>
+            <span class="n">dmuxy</span><span class="p">[</span><span class="n">iwoman</span><span class="p">:</span><span class="n">n_prod_categories</span><span class="p">:</span><span class="n">Y</span><span class="p">,</span> <span class="n">iy</span><span class="p">]</span> <span class="o">-=</span> <span class="n">big_d</span><span class="p">[:,</span> <span class="n">iwoman</span><span class="p">]</span>
+            <span class="n">iy</span> <span class="o">+=</span> <span class="mi">1</span>
+
+        <span class="k">return</span> <span class="p">(</span><span class="n">muxy</span><span class="p">,</span> <span class="n">mux0</span><span class="p">,</span> <span class="n">mu0y</span><span class="p">),</span> <span class="n">marg_err_x</span><span class="p">,</span> <span class="n">marg_err_y</span><span class="p">,</span> <span class="p">(</span><span class="n">dmuxy</span><span class="p">,</span> <span class="n">dmux0</span><span class="p">,</span> <span class="n">dmu0y</span><span class="p">)</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h2 id="cupid_matching.ipfp_solvers.ipfp_homoskedastic_nosingles_solver" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">ipfp_homoskedastic_nosingles_solver</span><span class="p">(</span><span class="n">Phi</span><span class="p">,</span> <span class="n">men_margins</span><span class="p">,</span> <span class="n">women_margins</span><span class="p">,</span> <span class="n">tol</span><span class="o">=</span><span class="mf">1e-09</span><span class="p">,</span> <span class="n">gr</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">maxiter</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span></code>
+
+
+<a href="#cupid_matching.ipfp_solvers.ipfp_homoskedastic_nosingles_solver" class="headerlink" title="Permanent link">&para;</a></h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Solves for equilibrium in a Choo and Siow market without singles,
+given systematic surplus and margins</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>Phi</code></td>
+        <td><code>&lt;built-in function array&gt;</code></td>
+        <td><p>matrix of systematic surplus, shape (X, Y)</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>men_margins</code></td>
+        <td><code>&lt;built-in function array&gt;</code></td>
+        <td><p>vector of men margins, shape (X)</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>women_margins</code></td>
+        <td><code>&lt;built-in function array&gt;</code></td>
+        <td><p>vector of women margins, shape (Y)</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>tol</code></td>
+        <td><code>float</code></td>
+        <td><p>tolerance on change in solution</p></td>
+        <td><code>1e-09</code></td>
+      </tr>
+      <tr>
+        <td><code>gr</code></td>
+        <td><code>bool</code></td>
+        <td><p>if <code>True</code>, also evaluate derivatives of $(\mu_{xy})$ wrt $\Phi$</p></td>
+        <td><code>False</code></td>
+      </tr>
+      <tr>
+        <td><code>verbose</code></td>
+        <td><code>bool</code></td>
+        <td><p>if <code>True</code>, prints information</p></td>
+        <td><code>False</code></td>
+      </tr>
+      <tr>
+        <td><code>maxiter</code></td>
+        <td><code>int</code></td>
+        <td><p>maximum number of iterations</p></td>
+        <td><code>1000</code></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>muxy</code></td>
+      <td><p>the matching patterns, shape (X, Y)
+marg_err_x, marg_err_y: the errors on the margins
+and the gradients of $(\mu_{xy})$ wrt $\Phi$ if <code>gr</code> is <code>True</code></p></td>
+    </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>cupid_matching/ipfp_solvers.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">ipfp_homoskedastic_nosingles_solver</span><span class="p">(</span>
+    <span class="n">Phi</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">,</span>
+    <span class="n">men_margins</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">,</span>
+    <span class="n">women_margins</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">,</span>
+    <span class="n">tol</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1e-9</span><span class="p">,</span>
+    <span class="n">gr</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="n">verbose</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="n">maxiter</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1000</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">IPFPResults</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Solves for equilibrium in a Choo and Siow market without singles,</span>
+<span class="sd">    given systematic surplus and margins</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        Phi: matrix of systematic surplus, shape (X, Y)</span>
+<span class="sd">        men_margins: vector of men margins, shape (X)</span>
+<span class="sd">        women_margins: vector of women margins, shape (Y)</span>
+<span class="sd">        tol: tolerance on change in solution</span>
+<span class="sd">        gr: if `True`, also evaluate derivatives of $(\mu_{xy})$ wrt $\Phi$</span>
+<span class="sd">        verbose: if `True`, prints information</span>
+<span class="sd">        maxiter: maximum number of iterations</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">         muxy: the matching patterns, shape (X, Y)</span>
+<span class="sd">         marg_err_x, marg_err_y: the errors on the margins</span>
+<span class="sd">         and the gradients of $(\mu_{xy})$ wrt $\Phi$ if `gr` is `True`</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">X</span><span class="p">,</span> <span class="n">Y</span> <span class="o">=</span> <span class="n">_ipfp_check_sizes</span><span class="p">(</span><span class="n">men_margins</span><span class="p">,</span> <span class="n">women_margins</span><span class="p">,</span> <span class="n">Phi</span><span class="p">)</span>
+    <span class="n">n_couples</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">men_margins</span><span class="p">)</span>
+
+    <span class="c1"># check that there are as many men as women</span>
+    <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">women_margins</span><span class="p">)</span> <span class="o">-</span> <span class="n">n_couples</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">n_couples</span> <span class="o">*</span> <span class="n">tol</span><span class="p">:</span>
+        <span class="n">bs_error_abort</span><span class="p">(</span><span class="s2">&quot;There should be as many men as women&quot;</span><span class="p">)</span>
+
+    <span class="n">ephi2</span><span class="p">,</span> <span class="n">der_ephi2</span> <span class="o">=</span> <span class="n">npexp</span><span class="p">(</span><span class="n">Phi</span> <span class="o">/</span> <span class="mf">2.0</span><span class="p">,</span> <span class="n">deriv</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">ephi2T</span> <span class="o">=</span> <span class="n">ephi2</span><span class="o">.</span><span class="n">T</span>
+
+    <span class="c1">#############################################################################</span>
+    <span class="c1"># we solve the equilibrium equations muxy = ephi2 * tx * ty</span>
+    <span class="c1">#   starting with a reasonable initial point for tx and ty: : tx = ty = bigc</span>
+    <span class="c1">#   it is important that it fit the number of individuals</span>
+    <span class="c1">#############################################################################</span>
+    <span class="n">bigc</span> <span class="o">=</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">n_couples</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">ephi2</span><span class="p">))</span>
+    <span class="n">txi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">bigc</span><span class="p">)</span>
+    <span class="n">tyi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">bigc</span><span class="p">)</span>
+
+    <span class="n">err_diff</span> <span class="o">=</span> <span class="n">bigc</span>
+    <span class="n">tol_diff</span> <span class="o">=</span> <span class="n">tol</span> <span class="o">*</span> <span class="n">err_diff</span>
+    <span class="n">niter</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">err_diff</span> <span class="o">&gt;</span> <span class="n">tol_diff</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">niter</span> <span class="o">&lt;</span> <span class="n">maxiter</span><span class="p">):</span>
+        <span class="n">sx</span> <span class="o">=</span> <span class="n">ephi2</span> <span class="o">@</span> <span class="n">tyi</span>
+        <span class="n">tx</span> <span class="o">=</span> <span class="n">men_margins</span> <span class="o">/</span> <span class="n">sx</span>
+        <span class="n">sy</span> <span class="o">=</span> <span class="n">ephi2T</span> <span class="o">@</span> <span class="n">tx</span>
+        <span class="n">ty</span> <span class="o">=</span> <span class="n">women_margins</span> <span class="o">/</span> <span class="n">sy</span>
+        <span class="n">err_x</span> <span class="o">=</span> <span class="n">npmaxabs</span><span class="p">(</span><span class="n">tx</span> <span class="o">-</span> <span class="n">txi</span><span class="p">)</span>
+        <span class="n">err_y</span> <span class="o">=</span> <span class="n">npmaxabs</span><span class="p">(</span><span class="n">ty</span> <span class="o">-</span> <span class="n">tyi</span><span class="p">)</span>
+        <span class="n">err_diff</span> <span class="o">=</span> <span class="n">err_x</span> <span class="o">+</span> <span class="n">err_y</span>
+        <span class="n">txi</span><span class="p">,</span> <span class="n">tyi</span> <span class="o">=</span> <span class="n">tx</span><span class="p">,</span> <span class="n">ty</span>
+        <span class="n">niter</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="n">muxy</span> <span class="o">=</span> <span class="n">ephi2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">outer</span><span class="p">(</span><span class="n">txi</span><span class="p">,</span> <span class="n">tyi</span><span class="p">)</span>
+    <span class="n">marg_err_x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">muxy</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">-</span> <span class="n">men_margins</span>
+    <span class="n">marg_err_y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">muxy</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">-</span> <span class="n">women_margins</span>
+    <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;After </span><span class="si">{</span><span class="n">niter</span><span class="si">}</span><span class="s2"> iterations:&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">Margin error on x: </span><span class="si">{</span><span class="n">npmaxabs</span><span class="p">(</span><span class="n">marg_err_x</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">Margin error on y: </span><span class="si">{</span><span class="n">npmaxabs</span><span class="p">(</span><span class="n">marg_err_y</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">gr</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">muxy</span><span class="p">,</span> <span class="n">marg_err_x</span><span class="p">,</span> <span class="n">marg_err_y</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">sxi</span> <span class="o">=</span> <span class="n">ephi2</span> <span class="o">@</span> <span class="n">tyi</span>
+        <span class="n">syi</span> <span class="o">=</span> <span class="n">ephi2T</span> <span class="o">@</span> <span class="n">txi</span>
+        <span class="n">n_sum_categories</span> <span class="o">=</span> <span class="n">X</span> <span class="o">+</span> <span class="n">Y</span>
+        <span class="n">n_prod_categories</span> <span class="o">=</span> <span class="n">X</span> <span class="o">*</span> <span class="n">Y</span>
+
+        <span class="c1"># start with the LHS of the linear system</span>
+        <span class="n">lhs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">n_sum_categories</span><span class="p">,</span> <span class="n">n_sum_categories</span><span class="p">))</span>
+        <span class="n">lhs</span><span class="p">[:</span><span class="n">X</span><span class="p">,</span> <span class="p">:</span><span class="n">X</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">sxi</span><span class="p">)</span>
+        <span class="n">lhs</span><span class="p">[:</span><span class="n">X</span><span class="p">,</span> <span class="n">X</span><span class="p">:]</span> <span class="o">=</span> <span class="n">ephi2</span> <span class="o">*</span> <span class="n">txi</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+        <span class="n">lhs</span><span class="p">[</span><span class="n">X</span><span class="p">:,</span> <span class="n">X</span><span class="p">:]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">syi</span><span class="p">)</span>
+        <span class="n">lhs</span><span class="p">[</span><span class="n">X</span><span class="p">:,</span> <span class="p">:</span><span class="n">X</span><span class="p">]</span> <span class="o">=</span> <span class="n">ephi2T</span> <span class="o">*</span> <span class="n">tyi</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+
+        <span class="c1"># now fill the RHS</span>
+        <span class="n">n_cols_rhs</span> <span class="o">=</span> <span class="n">n_prod_categories</span>
+        <span class="n">rhs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">n_sum_categories</span><span class="p">,</span> <span class="n">n_cols_rhs</span><span class="p">))</span>
+
+        <span class="c1">#  to compute derivatives of (txi, tyi) wrt Phi</span>
+        <span class="n">der_ephi2</span> <span class="o">/=</span> <span class="mf">2.0</span> <span class="o">*</span> <span class="n">ephi2</span>  <span class="c1"># 1/2 with safeguards</span>
+        <span class="n">ivar</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">for</span> <span class="n">iman</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">X</span><span class="p">):</span>
+            <span class="n">rhs</span><span class="p">[</span><span class="n">iman</span><span class="p">,</span> <span class="n">ivar</span><span class="p">:</span> <span class="p">(</span><span class="n">ivar</span> <span class="o">+</span> <span class="n">Y</span><span class="p">)]</span> <span class="o">=</span> <span class="o">-</span><span class="n">muxy</span><span class="p">[</span><span class="n">iman</span><span class="p">,</span> <span class="p">:]</span> <span class="o">*</span> <span class="n">der_ephi2</span><span class="p">[</span><span class="n">iman</span><span class="p">,</span> <span class="p">:]</span>
+            <span class="n">ivar</span> <span class="o">+=</span> <span class="n">Y</span>
+        <span class="n">ivar1</span> <span class="o">=</span> <span class="n">X</span>
+        <span class="n">ivar2</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">for</span> <span class="n">iwoman</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">Y</span><span class="p">):</span>
+            <span class="n">rhs</span><span class="p">[</span><span class="n">ivar1</span><span class="p">,</span> <span class="n">ivar2</span><span class="p">:</span><span class="n">n_cols_rhs</span><span class="p">:</span><span class="n">Y</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="n">muxy</span><span class="p">[:,</span> <span class="n">iwoman</span><span class="p">]</span> <span class="o">*</span> <span class="n">der_ephi2</span><span class="p">[:,</span> <span class="n">iwoman</span><span class="p">]</span>
+            <span class="n">ivar1</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="n">ivar2</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="c1"># solve for the derivatives of txi and tyi</span>
+        <span class="n">dt_dT</span> <span class="o">=</span> <span class="n">spla</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">lhs</span><span class="p">,</span> <span class="n">rhs</span><span class="p">)</span>
+        <span class="n">dt</span> <span class="o">=</span> <span class="n">dt_dT</span><span class="p">[:</span><span class="n">X</span><span class="p">,</span> <span class="p">:]</span>
+        <span class="n">dT</span> <span class="o">=</span> <span class="n">dt_dT</span><span class="p">[</span><span class="n">X</span><span class="p">:,</span> <span class="p">:]</span>
+        <span class="c1"># now construct the derivatives of muxy</span>
+        <span class="n">dmuxy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">n_prod_categories</span><span class="p">,</span> <span class="n">n_cols_rhs</span><span class="p">))</span>
+        <span class="n">ivar</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">for</span> <span class="n">iman</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">X</span><span class="p">):</span>
+            <span class="n">dt_man</span> <span class="o">=</span> <span class="n">dt</span><span class="p">[</span><span class="n">iman</span><span class="p">,</span> <span class="p">:]</span>
+            <span class="n">dmuxy</span><span class="p">[</span><span class="n">ivar</span><span class="p">:</span> <span class="p">(</span><span class="n">ivar</span> <span class="o">+</span> <span class="n">Y</span><span class="p">),</span> <span class="p">:]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">outer</span><span class="p">((</span><span class="n">ephi2</span><span class="p">[</span><span class="n">iman</span><span class="p">,</span> <span class="p">:]</span> <span class="o">*</span> <span class="n">tyi</span><span class="p">),</span> <span class="n">dt_man</span><span class="p">)</span>
+            <span class="n">ivar</span> <span class="o">+=</span> <span class="n">Y</span>
+        <span class="k">for</span> <span class="n">iwoman</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">Y</span><span class="p">):</span>
+            <span class="n">dT_woman</span> <span class="o">=</span> <span class="n">dT</span><span class="p">[</span><span class="n">iwoman</span><span class="p">,</span> <span class="p">:]</span>
+            <span class="n">dmuxy</span><span class="p">[</span><span class="n">iwoman</span><span class="p">:</span><span class="n">n_prod_categories</span><span class="p">:</span><span class="n">Y</span><span class="p">,</span> <span class="p">:]</span> <span class="o">+=</span> <span class="n">np</span><span class="o">.</span><span class="n">outer</span><span class="p">(</span>
+                <span class="p">(</span><span class="n">ephi2</span><span class="p">[:,</span> <span class="n">iwoman</span><span class="p">]</span> <span class="o">*</span> <span class="n">txi</span><span class="p">),</span> <span class="n">dT_woman</span>
+            <span class="p">)</span>
+        <span class="c1"># add the term that comes from differentiating ephi2</span>
+        <span class="n">muxy_vec2</span> <span class="o">=</span> <span class="p">(</span><span class="n">muxy</span> <span class="o">*</span> <span class="n">der_ephi2</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">n_prod_categories</span><span class="p">)</span>
+        <span class="n">dmuxy</span> <span class="o">+=</span> <span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">muxy_vec2</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">muxy</span><span class="p">,</span> <span class="n">marg_err_x</span><span class="p">,</span> <span class="n">marg_err_y</span><span class="p">,</span> <span class="n">dmuxy</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h2 id="cupid_matching.ipfp_solvers.ipfp_homoskedastic_solver" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">ipfp_homoskedastic_solver</span><span class="p">(</span><span class="n">Phi</span><span class="p">,</span> <span class="n">men_margins</span><span class="p">,</span> <span class="n">women_margins</span><span class="p">,</span> <span class="n">tol</span><span class="o">=</span><span class="mf">1e-09</span><span class="p">,</span> <span class="n">gr</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">maxiter</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span></code>
+
+
+<a href="#cupid_matching.ipfp_solvers.ipfp_homoskedastic_solver" class="headerlink" title="Permanent link">&para;</a></h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Solves for equilibrium in a Choo and Siow market with singles,
+given systematic surplus and margins</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>Phi</code></td>
+        <td><code>&lt;built-in function array&gt;</code></td>
+        <td><p>matrix of systematic surplus, shape (X, Y)</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>men_margins</code></td>
+        <td><code>&lt;built-in function array&gt;</code></td>
+        <td><p>vector of men margins, shape (X)</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>women_margins</code></td>
+        <td><code>&lt;built-in function array&gt;</code></td>
+        <td><p>vector of women margins, shape (Y)</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>tol</code></td>
+        <td><code>float</code></td>
+        <td><p>tolerance on change in solution</p></td>
+        <td><code>1e-09</code></td>
+      </tr>
+      <tr>
+        <td><code>gr</code></td>
+        <td><code>bool</code></td>
+        <td><p>if <code>True</code>, also evaluate derivatives of the matching patterns</p></td>
+        <td><code>False</code></td>
+      </tr>
+      <tr>
+        <td><code>verbose</code></td>
+        <td><code>bool</code></td>
+        <td><p>if <code>True</code>, prints information</p></td>
+        <td><code>False</code></td>
+      </tr>
+      <tr>
+        <td><code>maxiter</code></td>
+        <td><code>int</code></td>
+        <td><p>maximum number of iterations</p></td>
+        <td><code>1000</code></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>(muxy, mux0, mu0y)</code></td>
+      <td><p>the matching patterns
+marg_err_x, marg_err_y: the errors on the margins
+and the gradients of the matching patterns wrt (men_margins, women_margins, Phi)
+if <code>gr</code> is <code>True</code></p></td>
+    </tr>
+  </tbody>
+</table>
+<p><strong>Examples:</strong></p>
+    <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1"># we generate a Choo and Siow homoskedastic matching</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">Y</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="n">n_sum_categories</span> <span class="o">=</span> <span class="n">X</span> <span class="o">+</span> <span class="n">Y</span>
+<span class="n">n_prod_categories</span> <span class="o">=</span> <span class="n">X</span> <span class="o">*</span> <span class="n">Y</span>
+
+<span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span>
+<span class="n">n_bases</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="n">bases_surplus</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">n_bases</span><span class="p">))</span>
+<span class="n">x_men</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">X</span><span class="p">)</span> <span class="o">-</span> <span class="n">X</span> <span class="o">/</span> <span class="mf">2.0</span><span class="p">)</span> <span class="o">/</span> <span class="n">X</span>
+<span class="n">y_women</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">Y</span><span class="p">)</span> <span class="o">-</span> <span class="n">Y</span> <span class="o">/</span> <span class="mf">2.0</span><span class="p">)</span> <span class="o">/</span> <span class="n">Y</span>
+
+<span class="n">bases_surplus</span><span class="p">[:,</span> <span class="p">:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="k">for</span> <span class="n">iy</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">Y</span><span class="p">):</span>
+    <span class="n">bases_surplus</span><span class="p">[:,</span> <span class="n">iy</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">x_men</span>
+<span class="k">for</span> <span class="n">ix</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">X</span><span class="p">):</span>
+    <span class="n">bases_surplus</span><span class="p">[</span><span class="n">ix</span><span class="p">,</span> <span class="p">:,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">y_women</span>
+<span class="k">for</span> <span class="n">ix</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">X</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">iy</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">Y</span><span class="p">):</span>
+        <span class="n">bases_surplus</span><span class="p">[</span><span class="n">ix</span><span class="p">,</span> <span class="n">iy</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">x_men</span><span class="p">[</span><span class="n">ix</span><span class="p">]</span> <span class="o">-</span> <span class="n">y_women</span><span class="p">[</span><span class="n">iy</span><span class="p">])</span> <span class="o">*</span> <span class="p">(</span>
+            <span class="n">x_men</span><span class="p">[</span><span class="n">ix</span><span class="p">]</span> <span class="o">-</span> <span class="n">y_women</span><span class="p">[</span><span class="n">iy</span><span class="p">]</span>
+        <span class="p">)</span>
+
+<span class="n">men_margins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">X</span><span class="p">)</span>
+<span class="n">women_margins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">Y</span><span class="p">)</span>
+
+<span class="c1"># np.random.normal(mu, sigma, size=n_bases)</span>
+<span class="n">true_surplus_params</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">3.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">2.0</span><span class="p">])</span>
+<span class="n">true_surplus_matrix</span> <span class="o">=</span> <span class="n">bases_surplus</span> <span class="o">@</span> <span class="n">true_surplus_params</span>
+
+<span class="n">mus</span><span class="p">,</span> <span class="n">marg_err_x</span><span class="p">,</span> <span class="n">marg_err_y</span> <span class="o">=</span> <span class="n">ipfp_homoskedastic_solver</span><span class="p">(</span>
+    <span class="n">true_surplus_matrix</span><span class="p">,</span> <span class="n">men_margins</span><span class="p">,</span> <span class="n">women_margins</span><span class="p">,</span> <span class="n">tol</span><span class="o">=</span><span class="mf">1e-12</span>
+<span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+
+        <details class="quote">
+          <summary>Source code in <code>cupid_matching/ipfp_solvers.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">ipfp_homoskedastic_solver</span><span class="p">(</span>
+    <span class="n">Phi</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">,</span>
+    <span class="n">men_margins</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">,</span>
+    <span class="n">women_margins</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">,</span>
+    <span class="n">tol</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1e-9</span><span class="p">,</span>
+    <span class="n">gr</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="n">verbose</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="n">maxiter</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1000</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">IPFPResults</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Solves for equilibrium in a Choo and Siow market with singles,</span>
+<span class="sd">    given systematic surplus and margins</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        Phi: matrix of systematic surplus, shape (X, Y)</span>
+<span class="sd">        men_margins: vector of men margins, shape (X)</span>
+<span class="sd">        women_margins: vector of women margins, shape (Y)</span>
+<span class="sd">        tol: tolerance on change in solution</span>
+<span class="sd">        gr: if `True`, also evaluate derivatives of the matching patterns</span>
+<span class="sd">        verbose: if `True`, prints information</span>
+<span class="sd">        maxiter: maximum number of iterations</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">         (muxy, mux0, mu0y): the matching patterns</span>
+<span class="sd">         marg_err_x, marg_err_y: the errors on the margins</span>
+<span class="sd">         and the gradients of the matching patterns wrt (men_margins, women_margins, Phi)</span>
+<span class="sd">         if `gr` is `True`</span>
+
+
+<span class="sd">    Example:</span>
+<span class="sd">        ```py</span>
+<span class="sd">        # we generate a Choo and Siow homoskedastic matching</span>
+<span class="sd">        X = Y = 20</span>
+<span class="sd">        n_sum_categories = X + Y</span>
+<span class="sd">        n_prod_categories = X * Y</span>
+
+<span class="sd">        mu, sigma = 0.0, 1.0</span>
+<span class="sd">        n_bases = 4</span>
+<span class="sd">        bases_surplus = np.zeros((X, Y, n_bases))</span>
+<span class="sd">        x_men = (np.arange(X) - X / 2.0) / X</span>
+<span class="sd">        y_women = (np.arange(Y) - Y / 2.0) / Y</span>
+
+<span class="sd">        bases_surplus[:, :, 0] = 1</span>
+<span class="sd">        for iy in range(Y):</span>
+<span class="sd">            bases_surplus[:, iy, 1] = x_men</span>
+<span class="sd">        for ix in range(X):</span>
+<span class="sd">            bases_surplus[ix, :, 2] = y_women</span>
+<span class="sd">        for ix in range(X):</span>
+<span class="sd">            for iy in range(Y):</span>
+<span class="sd">                bases_surplus[ix, iy, 3] = (x_men[ix] - y_women[iy]) * (</span>
+<span class="sd">                    x_men[ix] - y_women[iy]</span>
+<span class="sd">                )</span>
+
+<span class="sd">        men_margins = np.random.uniform(1.0, 10.0, size=X)</span>
+<span class="sd">        women_margins = np.random.uniform(1.0, 10.0, size=Y)</span>
+
+<span class="sd">        # np.random.normal(mu, sigma, size=n_bases)</span>
+<span class="sd">        true_surplus_params = np.array([3.0, -1.0, -1.0, -2.0])</span>
+<span class="sd">        true_surplus_matrix = bases_surplus @ true_surplus_params</span>
+
+<span class="sd">        mus, marg_err_x, marg_err_y = ipfp_homoskedastic_solver(</span>
+<span class="sd">            true_surplus_matrix, men_margins, women_margins, tol=1e-12</span>
+<span class="sd">        )</span>
+<span class="sd">        ```</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">X</span><span class="p">,</span> <span class="n">Y</span> <span class="o">=</span> <span class="n">_ipfp_check_sizes</span><span class="p">(</span><span class="n">men_margins</span><span class="p">,</span> <span class="n">women_margins</span><span class="p">,</span> <span class="n">Phi</span><span class="p">)</span>
+
+    <span class="n">ephi2</span><span class="p">,</span> <span class="n">der_ephi2</span> <span class="o">=</span> <span class="n">npexp</span><span class="p">(</span><span class="n">Phi</span> <span class="o">/</span> <span class="mf">2.0</span><span class="p">,</span> <span class="n">deriv</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="c1">#############################################################################</span>
+    <span class="c1"># we solve the equilibrium equations muxy = ephi2 * tx * ty</span>
+    <span class="c1">#   where mux0=tx**2  and mu0y=ty**2</span>
+    <span class="c1">#   starting with a reasonable initial point for tx and ty: tx = ty = bigc</span>
+    <span class="c1">#   it is important that it fit the number of individuals</span>
+    <span class="c1">#############################################################################</span>
+
+    <span class="n">ephi2T</span> <span class="o">=</span> <span class="n">ephi2</span><span class="o">.</span><span class="n">T</span>
+    <span class="n">nindivs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">men_margins</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">women_margins</span><span class="p">)</span>
+    <span class="n">bigc</span> <span class="o">=</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">nindivs</span> <span class="o">/</span> <span class="p">(</span><span class="n">X</span> <span class="o">+</span> <span class="n">Y</span> <span class="o">+</span> <span class="mf">2.0</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">ephi2</span><span class="p">)))</span>
+    <span class="n">txi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">bigc</span><span class="p">)</span>
+    <span class="n">tyi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">bigc</span><span class="p">)</span>
+
+    <span class="n">err_diff</span> <span class="o">=</span> <span class="n">bigc</span>
+    <span class="n">tol_diff</span> <span class="o">=</span> <span class="n">tol</span> <span class="o">*</span> <span class="n">bigc</span>
+    <span class="n">niter</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">err_diff</span> <span class="o">&gt;</span> <span class="n">tol_diff</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">niter</span> <span class="o">&lt;</span> <span class="n">maxiter</span><span class="p">):</span>
+        <span class="n">sx</span> <span class="o">=</span> <span class="n">ephi2</span> <span class="o">@</span> <span class="n">tyi</span>
+        <span class="n">tx</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">sx</span> <span class="o">*</span> <span class="n">sx</span> <span class="o">+</span> <span class="mf">4.0</span> <span class="o">*</span> <span class="n">men_margins</span><span class="p">)</span> <span class="o">-</span> <span class="n">sx</span><span class="p">)</span> <span class="o">/</span> <span class="mf">2.0</span>
+        <span class="n">sy</span> <span class="o">=</span> <span class="n">ephi2T</span> <span class="o">@</span> <span class="n">tx</span>
+        <span class="n">ty</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">sy</span> <span class="o">*</span> <span class="n">sy</span> <span class="o">+</span> <span class="mf">4.0</span> <span class="o">*</span> <span class="n">women_margins</span><span class="p">)</span> <span class="o">-</span> <span class="n">sy</span><span class="p">)</span> <span class="o">/</span> <span class="mf">2.0</span>
+        <span class="n">err_x</span> <span class="o">=</span> <span class="n">npmaxabs</span><span class="p">(</span><span class="n">tx</span> <span class="o">-</span> <span class="n">txi</span><span class="p">)</span>
+        <span class="n">err_y</span> <span class="o">=</span> <span class="n">npmaxabs</span><span class="p">(</span><span class="n">ty</span> <span class="o">-</span> <span class="n">tyi</span><span class="p">)</span>
+        <span class="n">err_diff</span> <span class="o">=</span> <span class="n">err_x</span> <span class="o">+</span> <span class="n">err_y</span>
+        <span class="n">txi</span> <span class="o">=</span> <span class="n">tx</span>
+        <span class="n">tyi</span> <span class="o">=</span> <span class="n">ty</span>
+        <span class="n">niter</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="n">mux0</span> <span class="o">=</span> <span class="n">txi</span> <span class="o">*</span> <span class="n">txi</span>
+    <span class="n">mu0y</span> <span class="o">=</span> <span class="n">tyi</span> <span class="o">*</span> <span class="n">tyi</span>
+    <span class="n">muxy</span> <span class="o">=</span> <span class="n">ephi2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">outer</span><span class="p">(</span><span class="n">txi</span><span class="p">,</span> <span class="n">tyi</span><span class="p">)</span>
+    <span class="n">marg_err_x</span> <span class="o">=</span> <span class="n">mux0</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">muxy</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">-</span> <span class="n">men_margins</span>
+    <span class="n">marg_err_y</span> <span class="o">=</span> <span class="n">mu0y</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">muxy</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">-</span> <span class="n">women_margins</span>
+    <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;After </span><span class="si">{</span><span class="n">niter</span><span class="si">}</span><span class="s2"> iterations:&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">Margin error on x: </span><span class="si">{</span><span class="n">npmaxabs</span><span class="p">(</span><span class="n">marg_err_x</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">Margin error on y: </span><span class="si">{</span><span class="n">npmaxabs</span><span class="p">(</span><span class="n">marg_err_y</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">gr</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">muxy</span><span class="p">,</span> <span class="n">mux0</span><span class="p">,</span> <span class="n">mu0y</span><span class="p">),</span> <span class="n">marg_err_x</span><span class="p">,</span> <span class="n">marg_err_y</span>
+    <span class="k">else</span><span class="p">:</span>  <span class="c1"># we compute the derivatives</span>
+        <span class="n">sxi</span> <span class="o">=</span> <span class="n">ephi2</span> <span class="o">@</span> <span class="n">tyi</span>
+        <span class="n">syi</span> <span class="o">=</span> <span class="n">ephi2T</span> <span class="o">@</span> <span class="n">txi</span>
+        <span class="n">n_sum_categories</span> <span class="o">=</span> <span class="n">X</span> <span class="o">+</span> <span class="n">Y</span>
+        <span class="n">n_prod_categories</span> <span class="o">=</span> <span class="n">X</span> <span class="o">*</span> <span class="n">Y</span>
+        <span class="c1"># start with the LHS of the linear system</span>
+        <span class="n">lhs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">n_sum_categories</span><span class="p">,</span> <span class="n">n_sum_categories</span><span class="p">))</span>
+        <span class="n">lhs</span><span class="p">[:</span><span class="n">X</span><span class="p">,</span> <span class="p">:</span><span class="n">X</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="mf">2.0</span> <span class="o">*</span> <span class="n">txi</span> <span class="o">+</span> <span class="n">sxi</span><span class="p">)</span>
+        <span class="n">lhs</span><span class="p">[:</span><span class="n">X</span><span class="p">,</span> <span class="n">X</span><span class="p">:]</span> <span class="o">=</span> <span class="n">ephi2</span> <span class="o">*</span> <span class="n">txi</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+        <span class="n">lhs</span><span class="p">[</span><span class="n">X</span><span class="p">:,</span> <span class="n">X</span><span class="p">:]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="mf">2.0</span> <span class="o">*</span> <span class="n">tyi</span> <span class="o">+</span> <span class="n">syi</span><span class="p">)</span>
+        <span class="n">lhs</span><span class="p">[</span><span class="n">X</span><span class="p">:,</span> <span class="p">:</span><span class="n">X</span><span class="p">]</span> <span class="o">=</span> <span class="n">ephi2T</span> <span class="o">*</span> <span class="n">tyi</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+        <span class="c1"># now fill the RHS</span>
+        <span class="n">n_cols_rhs</span> <span class="o">=</span> <span class="n">n_sum_categories</span> <span class="o">+</span> <span class="n">n_prod_categories</span>
+        <span class="n">rhs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">n_sum_categories</span><span class="p">,</span> <span class="n">n_cols_rhs</span><span class="p">))</span>
+        <span class="c1">#  to compute derivatives of (txi, tyi) wrt men_margins</span>
+        <span class="n">rhs</span><span class="p">[:</span><span class="n">X</span><span class="p">,</span> <span class="p">:</span><span class="n">X</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+        <span class="c1">#  to compute derivatives of (txi, tyi) wrt women_margins</span>
+        <span class="n">rhs</span><span class="p">[</span><span class="n">X</span><span class="p">:</span><span class="n">n_sum_categories</span><span class="p">,</span> <span class="n">X</span><span class="p">:</span><span class="n">n_sum_categories</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">Y</span><span class="p">)</span>
+        <span class="c1">#  to compute derivatives of (txi, tyi) wrt Phi</span>
+        <span class="n">der_ephi2</span> <span class="o">/=</span> <span class="mf">2.0</span> <span class="o">*</span> <span class="n">ephi2</span>  <span class="c1"># 1/2 with safeguards</span>
+        <span class="n">ivar</span> <span class="o">=</span> <span class="n">n_sum_categories</span>
+        <span class="k">for</span> <span class="n">iman</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">X</span><span class="p">):</span>
+            <span class="n">rhs</span><span class="p">[</span><span class="n">iman</span><span class="p">,</span> <span class="n">ivar</span><span class="p">:</span> <span class="p">(</span><span class="n">ivar</span> <span class="o">+</span> <span class="n">Y</span><span class="p">)]</span> <span class="o">=</span> <span class="o">-</span><span class="n">muxy</span><span class="p">[</span><span class="n">iman</span><span class="p">,</span> <span class="p">:]</span> <span class="o">*</span> <span class="n">der_ephi2</span><span class="p">[</span><span class="n">iman</span><span class="p">,</span> <span class="p">:]</span>
+            <span class="n">ivar</span> <span class="o">+=</span> <span class="n">Y</span>
+        <span class="n">ivar1</span> <span class="o">=</span> <span class="n">X</span>
+        <span class="n">ivar2</span> <span class="o">=</span> <span class="n">n_sum_categories</span>
+        <span class="k">for</span> <span class="n">iwoman</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">Y</span><span class="p">):</span>
+            <span class="n">rhs</span><span class="p">[</span><span class="n">ivar1</span><span class="p">,</span> <span class="n">ivar2</span><span class="p">:</span><span class="n">n_cols_rhs</span><span class="p">:</span><span class="n">Y</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="n">muxy</span><span class="p">[:,</span> <span class="n">iwoman</span><span class="p">]</span> <span class="o">*</span> <span class="n">der_ephi2</span><span class="p">[:,</span> <span class="n">iwoman</span><span class="p">]</span>
+            <span class="n">ivar1</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="n">ivar2</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="c1"># solve for the derivatives of txi and tyi</span>
+        <span class="n">dt_dT</span> <span class="o">=</span> <span class="n">spla</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">lhs</span><span class="p">,</span> <span class="n">rhs</span><span class="p">)</span>
+        <span class="n">dt</span> <span class="o">=</span> <span class="n">dt_dT</span><span class="p">[:</span><span class="n">X</span><span class="p">,</span> <span class="p">:]</span>
+        <span class="n">dT</span> <span class="o">=</span> <span class="n">dt_dT</span><span class="p">[</span><span class="n">X</span><span class="p">:,</span> <span class="p">:]</span>
+        <span class="c1"># now construct the derivatives of the mus</span>
+        <span class="n">dmux0</span> <span class="o">=</span> <span class="mf">2.0</span> <span class="o">*</span> <span class="p">(</span><span class="n">dt</span> <span class="o">*</span> <span class="n">txi</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)))</span>
+        <span class="n">dmu0y</span> <span class="o">=</span> <span class="mf">2.0</span> <span class="o">*</span> <span class="p">(</span><span class="n">dT</span> <span class="o">*</span> <span class="n">tyi</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)))</span>
+        <span class="n">dmuxy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">n_prod_categories</span><span class="p">,</span> <span class="n">n_cols_rhs</span><span class="p">))</span>
+        <span class="n">ivar</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">for</span> <span class="n">iman</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">X</span><span class="p">):</span>
+            <span class="n">dt_man</span> <span class="o">=</span> <span class="n">dt</span><span class="p">[</span><span class="n">iman</span><span class="p">,</span> <span class="p">:]</span>
+            <span class="n">dmuxy</span><span class="p">[</span><span class="n">ivar</span><span class="p">:</span> <span class="p">(</span><span class="n">ivar</span> <span class="o">+</span> <span class="n">Y</span><span class="p">),</span> <span class="p">:]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">outer</span><span class="p">((</span><span class="n">ephi2</span><span class="p">[</span><span class="n">iman</span><span class="p">,</span> <span class="p">:]</span> <span class="o">*</span> <span class="n">tyi</span><span class="p">),</span> <span class="n">dt_man</span><span class="p">)</span>
+            <span class="n">ivar</span> <span class="o">+=</span> <span class="n">Y</span>
+        <span class="k">for</span> <span class="n">iwoman</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">Y</span><span class="p">):</span>
+            <span class="n">dT_woman</span> <span class="o">=</span> <span class="n">dT</span><span class="p">[</span><span class="n">iwoman</span><span class="p">,</span> <span class="p">:]</span>
+            <span class="n">dmuxy</span><span class="p">[</span><span class="n">iwoman</span><span class="p">:</span><span class="n">n_prod_categories</span><span class="p">:</span><span class="n">Y</span><span class="p">,</span> <span class="p">:]</span> <span class="o">+=</span> <span class="n">np</span><span class="o">.</span><span class="n">outer</span><span class="p">(</span>
+                <span class="p">(</span><span class="n">ephi2</span><span class="p">[:,</span> <span class="n">iwoman</span><span class="p">]</span> <span class="o">*</span> <span class="n">txi</span><span class="p">),</span> <span class="n">dT_woman</span>
+            <span class="p">)</span>
+        <span class="c1"># add the term that comes from differentiating ephi2</span>
+        <span class="n">muxy_vec2</span> <span class="o">=</span> <span class="p">(</span><span class="n">muxy</span> <span class="o">*</span> <span class="n">der_ephi2</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">n_prod_categories</span><span class="p">)</span>
+        <span class="n">dmuxy</span><span class="p">[:,</span> <span class="n">n_sum_categories</span><span class="p">:]</span> <span class="o">+=</span> <span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">muxy_vec2</span><span class="p">)</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">muxy</span><span class="p">,</span> <span class="n">mux0</span><span class="p">,</span> <span class="n">mu0y</span><span class="p">),</span> <span class="n">marg_err_x</span><span class="p">,</span> <span class="n">marg_err_y</span><span class="p">,</span> <span class="p">(</span><span class="n">dmuxy</span><span class="p">,</span> <span class="n">dmux0</span><span class="p">,</span> <span class="n">dmu0y</span><span class="p">)</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+  </div>
+
+  <hr>
+<div class="md-source-file">
+  <small>
+    
+      Last update:
+      2022-02-07
+    
+  </small>
+</div>
+
+              
+
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../nested_logit/" class="md-footer__link md-footer__link--prev" aria-label="Previous: nested_logit" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              nested_logit
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../matching_utils/" class="md-footer__link md-footer__link--next" aria-label="Next: matching_utils" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              matching_utils
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.instant", "search.highlight", "navigation.tabs"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.092fa1f6.min.js"}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.e3b2bf44.min.js"></script>
+      
+    
+  </body>
+</html>

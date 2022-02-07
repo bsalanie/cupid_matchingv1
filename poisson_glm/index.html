@@ -1,0 +1,1065 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://github.pages.io/bsalanie/poisson_glm/">
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.1.10">
+    
+    
+      
+        <title>poisson_glm - cupid_matching</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.d6be258b.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.e6a45f82.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/_mkdocstrings.css">
+    
+    <script>__md_scope=new URL("..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="preference" data-md-color-primary="" data-md-color-accent="">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#poisson_glm-module" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="cupid_matching" class="md-header__button md-logo" aria-label="cupid_matching" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            cupid_matching
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              poisson_glm
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/bsalanie/cupid_matching/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href=".." class="md-tabs__link">
+      Home
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="https://github.com/bsalanie/cupid_matching/issues" class="md-tabs__link">
+      Report Issues
+    </a>
+  </li>
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../min_distance/" class="md-tabs__link md-tabs__link--active">
+        API Reference
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="cupid_matching" class="md-nav__button md-logo" aria-label="cupid_matching" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    cupid_matching
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/bsalanie/cupid_matching/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://github.com/bsalanie/cupid_matching/issues" class="md-nav__link">
+        Report Issues
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          API Reference
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="API Reference" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          API Reference
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../min_distance/" class="md-nav__link">
+        min_distance
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../min_distance_utils/" class="md-nav__link">
+        min_distance_utils
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          poisson_glm
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        poisson_glm
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#cupid_matching.poisson_glm" class="md-nav__link">
+    cupid_matching.poisson_glm
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cupid_matching.poisson_glm.choo_siow_poisson_glm" class="md-nav__link">
+    choo_siow_poisson_glm()
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../poisson_glm_utils/" class="md-nav__link">
+        poisson_glm_utils
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../entropy/" class="md-nav__link">
+        entropy
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../choo_siow/" class="md-nav__link">
+        choo_siow
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../choo_siow_gender_heteroskedastic/" class="md-nav__link">
+        choo_siow_gender_heteroskedastic
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../choo_siow_heteroskedastic/" class="md-nav__link">
+        choo_siow_heteroskedastic
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../nested_logit/" class="md-nav__link">
+        nested_logit
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ipfp_solvers/" class="md-nav__link">
+        ipfp_solvers
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../matching_utils/" class="md-nav__link">
+        matching_utils
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../utils/" class="md-nav__link">
+        utils
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#cupid_matching.poisson_glm" class="md-nav__link">
+    cupid_matching.poisson_glm
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cupid_matching.poisson_glm.choo_siow_poisson_glm" class="md-nav__link">
+    choo_siow_poisson_glm()
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+
+
+
+                
+<a href="https://github.com/bsalanie/cupid_matching/edit/master/docs/poisson_glm.md" title="Edit this page" class="md-content__button md-icon">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+</a>
+
+
+<h1 id="poisson_glm-module"><code>poisson_glm</code> module<a class="headerlink" href="#poisson_glm-module" title="Permanent link">&para;</a></h1>
+
+
+  <div class="doc doc-object doc-module">
+
+<a id="cupid_matching.poisson_glm"></a>
+    <div class="doc doc-contents first">
+
+      <p>Estimates the semilinear Choo and Siow homoskedastic (2006) model
+using Poisson GLM.</p>
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h2 id="cupid_matching.poisson_glm.choo_siow_poisson_glm" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">choo_siow_poisson_glm</span><span class="p">(</span><span class="n">muhat</span><span class="p">,</span> <span class="n">phi_bases</span><span class="p">,</span> <span class="n">tol</span><span class="o">=</span><span class="mf">1e-12</span><span class="p">,</span> <span class="n">max_iter</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span></code>
+
+
+<a href="#cupid_matching.poisson_glm.choo_siow_poisson_glm" class="headerlink" title="Permanent link">&para;</a></h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Estimates the semilinear Choo and Siow homoskedastic (2006) model
+    using Poisson GLM.</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>muhat</code></td>
+        <td><code>Matching</code></td>
+        <td><p>the observed Matching</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>phi_bases</code></td>
+        <td><code>ndarray</code></td>
+        <td><p>an (X, Y, K) array of bases</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>tol</code></td>
+        <td><code>Optional[float]</code></td>
+        <td><p>tolerance level for <code>linear_model.PoissonRegressor.fit</code></p></td>
+        <td><code>1e-12</code></td>
+      </tr>
+      <tr>
+        <td><code>max_iter</code></td>
+        <td><code>Optional[int]</code></td>
+        <td><p>maximum number of iterations
+for <code>linear_model.PoissonRegressor.fit</code></p></td>
+        <td><code>10000</code></td>
+      </tr>
+      <tr>
+        <td><code>verbose</code></td>
+        <td><code>Optional[int]</code></td>
+        <td><p>defines how much output we want (0 = least)</p></td>
+        <td><code>1</code></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>PoissonGLMResults</code></td>
+      <td><p>a <code>PoissonGLMResults</code> instance</p></td>
+    </tr>
+  </tbody>
+</table>
+<p><strong>Examples:</strong></p>
+    <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">n_households</span> <span class="o">=</span> <span class="mf">1e6</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">K</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">6</span>
+<span class="c1"># we setup a quadratic set of basis functions</span>
+<span class="n">phi_bases</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">K</span><span class="p">))</span>
+<span class="n">phi_bases</span><span class="p">[:,</span> <span class="p">:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">X</span><span class="p">):</span>
+    <span class="n">phi_bases</span><span class="p">[</span><span class="n">x</span><span class="p">,</span> <span class="p">:,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">x</span>
+    <span class="n">phi_bases</span><span class="p">[</span><span class="n">x</span><span class="p">,</span> <span class="p">:,</span> <span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="n">x</span> <span class="o">*</span> <span class="n">x</span>
+    <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">Y</span><span class="p">):</span>
+        <span class="n">phi_bases</span><span class="p">[</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="n">x</span> <span class="o">*</span> <span class="n">y</span>
+<span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">Y</span><span class="p">):</span>
+    <span class="n">phi_bases</span><span class="p">[:,</span> <span class="n">y</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">y</span>
+    <span class="n">phi_bases</span><span class="p">[:,</span> <span class="n">y</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span> <span class="o">=</span> <span class="n">y</span> <span class="o">*</span> <span class="n">y</span>
+
+<span class="n">lambda_true</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">K</span><span class="p">)</span>
+<span class="n">phi_bases</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">K</span><span class="p">)</span>
+<span class="n">Phi</span> <span class="o">=</span> <span class="n">phi_bases</span> <span class="o">@</span> <span class="n">lambda_true</span>
+
+<span class="c1"># we simulate a Choo and Siow sample from a population</span>
+<span class="c1">#  with equal numbers of men and women of each type</span>
+<span class="n">n</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="n">m</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">Y</span><span class="p">)</span>
+<span class="n">choo_siow_instance</span> <span class="o">=</span> <span class="n">ChooSiowPrimitives</span><span class="p">(</span><span class="n">Phi</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">)</span>
+<span class="n">mus_sim</span> <span class="o">=</span> <span class="n">choo_siow_instance</span><span class="o">.</span><span class="n">simulate</span><span class="p">(</span><span class="n">n_households</span><span class="p">)</span>
+<span class="n">muxy_sim</span><span class="p">,</span> <span class="n">mux0_sim</span><span class="p">,</span> <span class="n">mu0y_sim</span><span class="p">,</span> <span class="n">n_sim</span><span class="p">,</span> <span class="n">m_sim</span> <span class="o">=</span> <span class="n">mus_sim</span><span class="o">.</span><span class="n">unpack</span><span class="p">()</span>
+
+<span class="n">results</span> <span class="o">=</span> <span class="n">choo_siow_poisson_glm</span><span class="p">(</span><span class="n">mus_sim</span><span class="p">,</span> <span class="n">phi_bases</span><span class="p">)</span>
+
+<span class="c1"># compare true and estimated parameters</span>
+<span class="n">results</span><span class="o">.</span><span class="n">print_results</span><span class="p">(</span>
+    <span class="n">lambda_true</span><span class="p">,</span>
+    <span class="n">u_true</span><span class="o">=-</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">mux0_sim</span> <span class="o">/</span> <span class="n">n_sim</span><span class="p">),</span>
+    <span class="n">v_true</span><span class="o">=-</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">mu0y_sim</span> <span class="o">/</span> <span class="n">m_sim</span><span class="p">)</span>
+<span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+
+        <details class="quote">
+          <summary>Source code in <code>cupid_matching/poisson_glm.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">choo_siow_poisson_glm</span><span class="p">(</span>
+    <span class="n">muhat</span><span class="p">:</span> <span class="n">Matching</span><span class="p">,</span>
+    <span class="n">phi_bases</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
+    <span class="n">tol</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1e-12</span><span class="p">,</span>
+    <span class="n">max_iter</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="mi">10000</span><span class="p">,</span>
+    <span class="n">verbose</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">PoissonGLMResults</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Estimates the semilinear Choo and Siow homoskedastic (2006) model</span>
+<span class="sd">        using Poisson GLM.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        muhat: the observed Matching</span>
+<span class="sd">        phi_bases: an (X, Y, K) array of bases</span>
+<span class="sd">        tol: tolerance level for `linear_model.PoissonRegressor.fit`</span>
+<span class="sd">        max_iter: maximum number of iterations</span>
+<span class="sd">            for `linear_model.PoissonRegressor.fit`</span>
+<span class="sd">        verbose: defines how much output we want (0 = least)</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        a `PoissonGLMResults` instance</span>
+
+<span class="sd">    Example:</span>
+<span class="sd">        ```py</span>
+<span class="sd">        n_households = 1e6</span>
+<span class="sd">        X, Y, K = 4, 3, 6</span>
+<span class="sd">        # we setup a quadratic set of basis functions</span>
+<span class="sd">        phi_bases = np.zeros((X, Y, K))</span>
+<span class="sd">        phi_bases[:, :, 0] = 1</span>
+<span class="sd">        for x in range(X):</span>
+<span class="sd">            phi_bases[x, :, 1] = x</span>
+<span class="sd">            phi_bases[x, :, 3] = x * x</span>
+<span class="sd">            for y in range(Y):</span>
+<span class="sd">                phi_bases[x, y, 4] = x * y</span>
+<span class="sd">        for y in range(Y):</span>
+<span class="sd">            phi_bases[:, y, 2] = y</span>
+<span class="sd">            phi_bases[:, y, 5] = y * y</span>
+
+<span class="sd">        lambda_true = np.random.randn(K)</span>
+<span class="sd">        phi_bases = np.random.randn(X, Y, K)</span>
+<span class="sd">        Phi = phi_bases @ lambda_true</span>
+
+<span class="sd">        # we simulate a Choo and Siow sample from a population</span>
+<span class="sd">        #  with equal numbers of men and women of each type</span>
+<span class="sd">        n = np.ones(X)</span>
+<span class="sd">        m = np.ones(Y)</span>
+<span class="sd">        choo_siow_instance = ChooSiowPrimitives(Phi, n, m)</span>
+<span class="sd">        mus_sim = choo_siow_instance.simulate(n_households)</span>
+<span class="sd">        muxy_sim, mux0_sim, mu0y_sim, n_sim, m_sim = mus_sim.unpack()</span>
+
+<span class="sd">        results = choo_siow_poisson_glm(mus_sim, phi_bases)</span>
+
+<span class="sd">        # compare true and estimated parameters</span>
+<span class="sd">        results.print_results(</span>
+<span class="sd">            lambda_true,</span>
+<span class="sd">            u_true=-np.log(mux0_sim / n_sim),</span>
+<span class="sd">            v_true=-np.log(mu0y_sim / m_sim)</span>
+<span class="sd">        )</span>
+<span class="sd">        ```</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">try_sparse</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">K</span> <span class="o">=</span> <span class="n">phi_bases</span><span class="o">.</span><span class="n">shape</span>
+    <span class="n">XY</span> <span class="o">=</span> <span class="n">X</span> <span class="o">*</span> <span class="n">Y</span>
+    <span class="n">n_rows</span> <span class="o">=</span> <span class="n">XY</span> <span class="o">+</span> <span class="n">X</span> <span class="o">+</span> <span class="n">Y</span>
+    <span class="n">n_cols</span> <span class="o">=</span> <span class="n">X</span> <span class="o">+</span> <span class="n">Y</span> <span class="o">+</span> <span class="n">K</span>
+
+    <span class="c1"># the vector of weights for the Poisson regression</span>
+    <span class="n">w</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">XY</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">X</span> <span class="o">+</span> <span class="n">Y</span><span class="p">)))</span>
+    <span class="c1"># reshape the bases</span>
+    <span class="n">phi_mat</span> <span class="o">=</span> <span class="n">_make_XY_K_mat</span><span class="p">(</span><span class="n">phi_bases</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">try_sparse</span><span class="p">:</span>
+        <span class="n">w_mat</span> <span class="o">=</span> <span class="n">spr</span><span class="o">.</span><span class="n">csr_matrix</span><span class="p">(</span>
+            <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">XY</span><span class="p">,</span> <span class="n">n_cols</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">X</span> <span class="o">+</span> <span class="n">Y</span><span class="p">,</span> <span class="n">n_cols</span><span class="p">)))</span>
+        <span class="p">)</span>
+
+        <span class="c1"># construct the Z matrix</span>
+        <span class="n">ones_X</span> <span class="o">=</span> <span class="n">spr</span><span class="o">.</span><span class="n">csr_matrix</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="n">X</span><span class="p">,</span> <span class="mi">1</span><span class="p">)))</span>
+        <span class="n">ones_Y</span> <span class="o">=</span> <span class="n">spr</span><span class="o">.</span><span class="n">csr_matrix</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="n">Y</span><span class="p">,</span> <span class="mi">1</span><span class="p">)))</span>
+        <span class="n">zeros_XK</span> <span class="o">=</span> <span class="n">spr</span><span class="o">.</span><span class="n">csr_matrix</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">X</span><span class="p">,</span> <span class="n">K</span><span class="p">)))</span>
+        <span class="n">zeros_YK</span> <span class="o">=</span> <span class="n">spr</span><span class="o">.</span><span class="n">csr_matrix</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">Y</span><span class="p">,</span> <span class="n">K</span><span class="p">)))</span>
+        <span class="n">zeros_XY</span> <span class="o">=</span> <span class="n">spr</span><span class="o">.</span><span class="n">csr_matrix</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">)))</span>
+        <span class="n">zeros_YX</span> <span class="o">=</span> <span class="n">spr</span><span class="o">.</span><span class="n">csr_matrix</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">Y</span><span class="p">,</span> <span class="n">X</span><span class="p">)))</span>
+        <span class="n">id_X</span> <span class="o">=</span> <span class="n">spr</span><span class="o">.</span><span class="n">csr_matrix</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">X</span><span class="p">))</span>
+        <span class="n">id_Y</span> <span class="o">=</span> <span class="n">spr</span><span class="o">.</span><span class="n">csr_matrix</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">Y</span><span class="p">))</span>
+        <span class="n">Z_unweighted</span> <span class="o">=</span> <span class="n">spr</span><span class="o">.</span><span class="n">vstack</span><span class="p">(</span>
+            <span class="p">[</span>
+                <span class="n">spr</span><span class="o">.</span><span class="n">hstack</span><span class="p">([</span><span class="o">-</span><span class="n">spr</span><span class="o">.</span><span class="n">kron</span><span class="p">(</span><span class="n">id_X</span><span class="p">,</span> <span class="n">ones_Y</span><span class="p">),</span> <span class="o">-</span><span class="n">spr</span><span class="o">.</span><span class="n">kron</span><span class="p">(</span><span class="n">ones_X</span><span class="p">,</span> <span class="n">id_Y</span><span class="p">),</span> <span class="n">phi_mat</span><span class="p">]),</span>
+                <span class="n">spr</span><span class="o">.</span><span class="n">hstack</span><span class="p">([</span><span class="o">-</span><span class="n">id_X</span><span class="p">,</span> <span class="n">zeros_XY</span><span class="p">,</span> <span class="n">zeros_XK</span><span class="p">]),</span>
+                <span class="n">spr</span><span class="o">.</span><span class="n">hstack</span><span class="p">([</span><span class="n">zeros_YX</span><span class="p">,</span> <span class="o">-</span><span class="n">id_Y</span><span class="p">,</span> <span class="n">zeros_YK</span><span class="p">]),</span>
+            <span class="p">]</span>
+        <span class="p">)</span>
+        <span class="n">Z</span> <span class="o">=</span> <span class="n">Z_unweighted</span> <span class="o">/</span> <span class="n">w_mat</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">ones_X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="n">X</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+        <span class="n">ones_Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="n">Y</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+        <span class="n">zeros_XK</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">X</span><span class="p">,</span> <span class="n">K</span><span class="p">))</span>
+        <span class="n">zeros_YK</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">Y</span><span class="p">,</span> <span class="n">K</span><span class="p">))</span>
+        <span class="n">zeros_XY</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">))</span>
+        <span class="n">zeros_YX</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">Y</span><span class="p">,</span> <span class="n">X</span><span class="p">))</span>
+        <span class="n">id_X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+        <span class="n">id_Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">Y</span><span class="p">)</span>
+        <span class="n">Z_unweighted</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">(</span>
+            <span class="p">[</span>
+                <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">([</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">kron</span><span class="p">(</span><span class="n">id_X</span><span class="p">,</span> <span class="n">ones_Y</span><span class="p">),</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">kron</span><span class="p">(</span><span class="n">ones_X</span><span class="p">,</span> <span class="n">id_Y</span><span class="p">),</span> <span class="n">phi_mat</span><span class="p">]),</span>
+                <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">([</span><span class="o">-</span><span class="n">id_X</span><span class="p">,</span> <span class="n">zeros_XY</span><span class="p">,</span> <span class="n">zeros_XK</span><span class="p">]),</span>
+                <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">([</span><span class="n">zeros_YX</span><span class="p">,</span> <span class="o">-</span><span class="n">id_Y</span><span class="p">,</span> <span class="n">zeros_YK</span><span class="p">]),</span>
+            <span class="p">]</span>
+        <span class="p">)</span>
+        <span class="n">Z</span> <span class="o">=</span> <span class="n">Z_unweighted</span> <span class="o">/</span> <span class="n">w</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+
+    <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">m</span> <span class="o">=</span> <span class="n">muhat</span><span class="o">.</span><span class="n">unpack</span><span class="p">()</span>
+    <span class="n">var_muhat</span><span class="p">,</span> <span class="n">var_munm</span> <span class="o">=</span> <span class="n">_variance_muhat</span><span class="p">(</span><span class="n">muhat</span><span class="p">)</span>
+    <span class="p">(</span>
+        <span class="n">muxyhat_norm</span><span class="p">,</span>
+        <span class="n">var_muhat_norm</span><span class="p">,</span>
+        <span class="n">var_munm_norm</span><span class="p">,</span>
+        <span class="n">n_households</span><span class="p">,</span>
+        <span class="n">n_individuals</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">=</span> <span class="n">_prepare_data</span><span class="p">(</span><span class="n">muhat</span><span class="p">,</span> <span class="n">var_muhat</span><span class="p">,</span> <span class="n">var_munm</span><span class="p">)</span>
+
+    <span class="n">clf</span> <span class="o">=</span> <span class="n">linear_model</span><span class="o">.</span><span class="n">PoissonRegressor</span><span class="p">(</span>
+        <span class="n">fit_intercept</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">tol</span><span class="o">=</span><span class="n">tol</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">max_iter</span><span class="o">=</span><span class="n">max_iter</span>
+    <span class="p">)</span>
+    <span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">Z</span><span class="p">,</span> <span class="n">muxyhat_norm</span><span class="p">,</span> <span class="n">sample_weight</span><span class="o">=</span><span class="n">w</span><span class="p">)</span>
+    <span class="n">gamma_est</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">coef_</span>
+
+    <span class="c1"># we compute the variance-covariance of the estimator</span>
+    <span class="n">nr</span><span class="p">,</span> <span class="n">nc</span> <span class="o">=</span> <span class="n">Z</span><span class="o">.</span><span class="n">shape</span>
+    <span class="n">exp_Zg</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">Z</span> <span class="o">@</span> <span class="n">gamma_est</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">n_rows</span><span class="p">)</span>
+    <span class="n">A_hat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">nc</span><span class="p">,</span> <span class="n">nc</span><span class="p">))</span>
+    <span class="n">B_hat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">nc</span><span class="p">,</span> <span class="n">nc</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nr</span><span class="p">):</span>
+        <span class="n">Zi</span> <span class="o">=</span> <span class="n">Z</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="p">:]</span>
+        <span class="n">wi</span> <span class="o">=</span> <span class="n">w</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="n">A_hat</span> <span class="o">+=</span> <span class="n">wi</span> <span class="o">*</span> <span class="n">exp_Zg</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">outer</span><span class="p">(</span><span class="n">Zi</span><span class="p">,</span> <span class="n">Zi</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nr</span><span class="p">):</span>
+            <span class="n">Zj</span> <span class="o">=</span> <span class="n">Z</span><span class="p">[</span><span class="n">j</span><span class="p">,</span> <span class="p">:]</span>
+            <span class="n">B_hat</span> <span class="o">+=</span> <span class="n">wi</span> <span class="o">*</span> <span class="n">w</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">*</span> <span class="n">var_muhat_norm</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">outer</span><span class="p">(</span><span class="n">Zi</span><span class="p">,</span> <span class="n">Zj</span><span class="p">)</span>
+
+    <span class="n">A_inv</span> <span class="o">=</span> <span class="n">spla</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">A_hat</span><span class="p">)</span>
+    <span class="n">variance_gamma</span> <span class="o">=</span> <span class="n">A_inv</span> <span class="o">@</span> <span class="n">B_hat</span> <span class="o">@</span> <span class="n">A_inv</span>
+    <span class="n">stderrs_gamma</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">variance_gamma</span><span class="p">))</span>
+
+    <span class="n">beta_est</span> <span class="o">=</span> <span class="n">gamma_est</span><span class="p">[</span><span class="o">-</span><span class="n">K</span><span class="p">:]</span>
+    <span class="n">beta_std</span> <span class="o">=</span> <span class="n">stderrs_gamma</span><span class="p">[</span><span class="o">-</span><span class="n">K</span><span class="p">:]</span>
+    <span class="n">Phi_est</span> <span class="o">=</span> <span class="n">phi_bases</span> <span class="o">@</span> <span class="n">beta_est</span>
+
+    <span class="c1"># we correct for the effect of the normalization</span>
+    <span class="n">n_norm</span> <span class="o">=</span> <span class="n">n</span> <span class="o">/</span> <span class="n">n_individuals</span>
+    <span class="n">m_norm</span> <span class="o">=</span> <span class="n">m</span> <span class="o">/</span> <span class="n">n_individuals</span>
+    <span class="n">u_est</span> <span class="o">=</span> <span class="n">gamma_est</span><span class="p">[:</span><span class="n">X</span><span class="p">]</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">n_norm</span><span class="p">)</span>
+    <span class="n">v_est</span> <span class="o">=</span> <span class="n">gamma_est</span><span class="p">[</span><span class="n">X</span><span class="p">:</span><span class="o">-</span><span class="n">K</span><span class="p">]</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">m_norm</span><span class="p">)</span>
+
+    <span class="c1"># since u = a + log(n_norm) we also need to adjust the estimated variance</span>
+    <span class="n">z_unweighted_T</span> <span class="o">=</span> <span class="n">Z_unweighted</span><span class="o">.</span><span class="n">T</span>
+    <span class="n">u_std</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+    <span class="n">ix</span> <span class="o">=</span> <span class="n">XY</span>
+    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">X</span><span class="p">):</span>
+        <span class="n">n_norm_x</span> <span class="o">=</span> <span class="n">n_norm</span><span class="p">[</span><span class="n">x</span><span class="p">]</span>
+        <span class="n">A_inv_x</span> <span class="o">=</span> <span class="n">A_inv</span><span class="p">[</span><span class="n">x</span><span class="p">,</span> <span class="p">:]</span>
+        <span class="n">var_log_nx</span> <span class="o">=</span> <span class="n">var_munm_norm</span><span class="p">[</span><span class="n">ix</span><span class="p">,</span> <span class="n">ix</span><span class="p">]</span> <span class="o">/</span> <span class="n">n_norm_x</span> <span class="o">/</span> <span class="n">n_norm_x</span>
+        <span class="n">slice_x</span> <span class="o">=</span> <span class="nb">slice</span><span class="p">(</span><span class="n">x</span> <span class="o">*</span> <span class="n">Y</span><span class="p">,</span> <span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">Y</span><span class="p">)</span>
+        <span class="n">covar_term</span> <span class="o">=</span> <span class="n">var_muhat_norm</span><span class="p">[:,</span> <span class="n">ix</span><span class="p">]</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">var_muhat_norm</span><span class="p">[:,</span> <span class="n">slice_x</span><span class="p">],</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">cov_a_lognx</span> <span class="o">=</span> <span class="p">(</span><span class="n">A_inv_x</span> <span class="o">@</span> <span class="n">z_unweighted_T</span> <span class="o">@</span> <span class="n">covar_term</span><span class="p">)</span> <span class="o">/</span> <span class="n">n_norm_x</span>
+        <span class="n">ux_var</span> <span class="o">=</span> <span class="n">variance_gamma</span><span class="p">[</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="p">]</span> <span class="o">+</span> <span class="n">var_log_nx</span> <span class="o">+</span> <span class="mf">2.0</span> <span class="o">*</span> <span class="n">cov_a_lognx</span>
+        <span class="n">u_std</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="o">=</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">ux_var</span><span class="p">)</span>
+        <span class="n">ix</span> <span class="o">+=</span> <span class="mi">1</span>
+
+    <span class="n">v_std</span> <span class="o">=</span> <span class="n">stderrs_gamma</span><span class="p">[</span><span class="n">X</span><span class="p">:</span><span class="o">-</span><span class="n">K</span><span class="p">]</span>
+    <span class="n">iy</span><span class="p">,</span> <span class="n">jy</span> <span class="o">=</span> <span class="n">X</span><span class="p">,</span> <span class="n">XY</span> <span class="o">+</span> <span class="n">X</span>
+    <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">Y</span><span class="p">):</span>
+        <span class="n">m_norm_y</span> <span class="o">=</span> <span class="n">m_norm</span><span class="p">[</span><span class="n">y</span><span class="p">]</span>
+        <span class="n">A_inv_y</span> <span class="o">=</span> <span class="n">A_inv</span><span class="p">[</span><span class="n">iy</span><span class="p">,</span> <span class="p">:]</span>
+        <span class="n">var_log_my</span> <span class="o">=</span> <span class="n">var_munm_norm</span><span class="p">[</span><span class="n">jy</span><span class="p">,</span> <span class="n">jy</span><span class="p">]</span> <span class="o">/</span> <span class="n">m_norm_y</span> <span class="o">/</span> <span class="n">m_norm_y</span>
+        <span class="n">slice_y</span> <span class="o">=</span> <span class="nb">slice</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">XY</span><span class="p">,</span> <span class="n">Y</span><span class="p">)</span>
+        <span class="n">covar_term</span> <span class="o">=</span> <span class="n">var_muhat_norm</span><span class="p">[:,</span> <span class="n">jy</span><span class="p">]</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">var_muhat_norm</span><span class="p">[:,</span> <span class="n">slice_y</span><span class="p">],</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">cov_b_logmy</span> <span class="o">=</span> <span class="p">(</span><span class="n">A_inv_y</span> <span class="o">@</span> <span class="n">z_unweighted_T</span> <span class="o">@</span> <span class="n">covar_term</span><span class="p">)</span> <span class="o">/</span> <span class="n">m_norm_y</span>
+        <span class="n">vy_var</span> <span class="o">=</span> <span class="n">variance_gamma</span><span class="p">[</span><span class="n">iy</span><span class="p">,</span> <span class="n">iy</span><span class="p">]</span> <span class="o">+</span> <span class="n">var_log_my</span> <span class="o">+</span> <span class="mf">2.0</span> <span class="o">*</span> <span class="n">cov_b_logmy</span>
+        <span class="n">v_std</span><span class="p">[</span><span class="n">y</span><span class="p">]</span> <span class="o">=</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">vy_var</span><span class="p">)</span>
+        <span class="n">iy</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="n">jy</span> <span class="o">+=</span> <span class="mi">1</span>
+
+    <span class="n">results</span> <span class="o">=</span> <span class="n">PoissonGLMResults</span><span class="p">(</span>
+        <span class="n">X</span><span class="o">=</span><span class="n">X</span><span class="p">,</span>
+        <span class="n">Y</span><span class="o">=</span><span class="n">Y</span><span class="p">,</span>
+        <span class="n">K</span><span class="o">=</span><span class="n">K</span><span class="p">,</span>
+        <span class="n">number_households</span><span class="o">=</span><span class="n">n_households</span><span class="p">,</span>
+        <span class="n">number_individuals</span><span class="o">=</span><span class="n">n_individuals</span><span class="p">,</span>
+        <span class="n">estimated_gamma</span><span class="o">=</span><span class="n">gamma_est</span><span class="p">,</span>
+        <span class="n">estimated_Phi</span><span class="o">=</span><span class="n">Phi_est</span><span class="p">,</span>
+        <span class="n">estimated_beta</span><span class="o">=</span><span class="n">beta_est</span><span class="p">,</span>
+        <span class="n">estimated_u</span><span class="o">=</span><span class="n">u_est</span><span class="p">,</span>
+        <span class="n">estimated_v</span><span class="o">=</span><span class="n">v_est</span><span class="p">,</span>
+        <span class="n">variance_gamma</span><span class="o">=</span><span class="n">variance_gamma</span><span class="p">,</span>
+        <span class="n">stderrs_gamma</span><span class="o">=</span><span class="n">stderrs_gamma</span><span class="p">,</span>
+        <span class="n">stderrs_beta</span><span class="o">=</span><span class="n">beta_std</span><span class="p">,</span>
+        <span class="n">stderrs_u</span><span class="o">=</span><span class="n">u_std</span><span class="p">,</span>
+        <span class="n">stderrs_v</span><span class="o">=</span><span class="n">v_std</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">results</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+  </div>
+
+  <hr>
+<div class="md-source-file">
+  <small>
+    
+      Last update:
+      2022-02-07
+    
+  </small>
+</div>
+
+              
+
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../min_distance_utils/" class="md-footer__link md-footer__link--prev" aria-label="Previous: min_distance_utils" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              min_distance_utils
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../poisson_glm_utils/" class="md-footer__link md-footer__link--next" aria-label="Next: poisson_glm_utils" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              poisson_glm_utils
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.instant", "search.highlight", "navigation.tabs"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.092fa1f6.min.js"}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.e3b2bf44.min.js"></script>
+      
+    
+  </body>
+</html>
