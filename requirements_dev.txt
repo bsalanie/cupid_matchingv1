@@ -1,4 +1,5 @@
 pip
+pytest
 bump2version
 wheel
 watchdog
