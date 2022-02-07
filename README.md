@@ -9,8 +9,8 @@
 
 
 -   Free software: MIT license
--   Documentation: https://bsalanie.github.io/cupid_matching
--   An interactive Streamlit app: https://share.streamlit.io/bsalanie/cupid_matching_st/main/cupid_streamlit.py
+-   Documentation: [https://bsalanie.github.io/cupid_matching](https://bsalanie.github.io/cupid_matching)
+-   See also: [An interactive Streamlit app](https://share.streamlit.io/bsalanie/cupid_matching_st/main/cupid_streamlit.py)
 
 ## Installation
 
