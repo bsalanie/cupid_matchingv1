@@ -7,7 +7,7 @@ flake8
 twine
 mkdocs
 mkdocs-material
-mkdocstrings
+mkdocstrings[python]
 mkdocs-git-revision-date-plugin
 
 
