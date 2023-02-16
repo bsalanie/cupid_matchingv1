@@ -19,7 +19,7 @@ theme:
 
 plugins:
     - search
-    - mkdocstrings = {extras = ["python"]}
+    - mkdocstrings
     - git-revision-date
           
 markdown_extensions:
