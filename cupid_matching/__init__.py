@@ -2,6 +2,6 @@
 
 __author__ = """Bernard Salanie"""
 __email__ = "bsalanie@columbia.edu"
-__version__ = '0.3.0'
+__version__ = '0.3.1'
 
 
